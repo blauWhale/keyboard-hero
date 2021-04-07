@@ -9,6 +9,6 @@ gibt es weniger Punkte. Das Spiel ist gewonnen, wenn das Lied fertig ist und ein
 Der Spieler verliert, wenn eine spezifische Anzahl Noten in Folge nicht getroffen wurde.
 
 ### Mockups
-#### Menu/Game Screen/Winner Screen/Loser Screen:<br>![alt text](Admin/Mockups/Keyboard Hero.png )
+#### Menu/Game Screen/Winner Screen/Loser Screen:<br>![Mockups](Admin/Mockups/Keyboard_Hero.png )
 
 ### Fazit
