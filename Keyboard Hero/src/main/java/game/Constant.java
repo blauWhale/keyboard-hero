@@ -1,13 +1,12 @@
 package game;
 
-import gui.SceneType;
-import gui.common.BaseScene;
+
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
-import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+
+import static game.Images.*;
+
 
 public class Constant {
 
@@ -19,7 +18,8 @@ public class Constant {
     public final static String[] Keys = {"A", "S", "D", "F", "G"};
 
 
-    //Colors
+    //BrickColors
+    public final static Image[] BrickColors = {GREEN_BRICK, RED_BRICK, YELLOW_BRICK, BLUE_BRICK, PURPLE_BRICK};
     /*
     Map<String, String> colors = new HashMap<>();
     colors.put("lightGreen", "#9DF583");

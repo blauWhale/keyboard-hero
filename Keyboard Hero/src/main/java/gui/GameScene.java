@@ -66,11 +66,11 @@ public class GameScene extends BaseScene {
         root.getChildren().add(combo);
 
         //Letters & Lines
-        int lineWith = 80;
+        int lineWidth = 80;
         int lineCount = 5;
-        int startX = (int) (SCREEN_WIDTH - lineWith * lineCount) / 2;
+        int startX = (int) (SCREEN_WIDTH - lineWidth * lineCount) / 2;
         for (int i = 0; i <= lineCount; i++) {
-            int x = startX + i * lineWith;
+            int x = startX + i * lineWidth;
             lines.add(new Line(x, 0, x, SCREEN_HEIGHT));
 
             //Null Exception Handler
@@ -80,14 +80,16 @@ public class GameScene extends BaseScene {
                 letters.get(i).setLayoutY(SCREEN_HEIGHT - 60);
                 letters.get(i).setFont(Font.font("Arial Bold", 40));
 
-                rectangles.add(new Rectangle(lineWith-10, 40, Color.valueOf(Colors[i])));
+                //Trigger Area
+                rectangles.add(new Rectangle(lineWidth-10, 40, Color.valueOf(Colors[i])));
                 rectangles.get(i).setX(x+5);
                 rectangles.get(i).setY(SCREEN_HEIGHT-50);
+                //Bricks
+                bricks.add(new Brick(x+5, (int) (SCREEN_HEIGHT-500),lineWidth-10,40,BrickColors[i]));
             }
         }
 
-        //Bricks //TODO
-        bricks.add(new Brick(0,100,20,50,GREEN_BRICK));
+
 
 
         root.getChildren().addAll(lines);
