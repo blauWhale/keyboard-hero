@@ -4,10 +4,12 @@ package gui;
 import game.objects.Brick;
 import gui.common.BaseScene;
 import javafx.animation.AnimationTimer;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -40,7 +42,12 @@ public class GameScene extends BaseScene {
     //Music Notes
     private ArrayList<Brick> bricks = new ArrayList<>();
 
-
+    //KeyHandler
+    private boolean A_KeyPressed = false;
+    private boolean S_KeyPressed = false;
+    private boolean D_KeyPressed = false;
+    private boolean F_KeyPressed = false;
+    private boolean G_KeyPressed = false;
 
 
     public GameScene(Navigator navigator) {
@@ -85,7 +92,7 @@ public class GameScene extends BaseScene {
                 rectangles.get(i).setX(x+5);
                 rectangles.get(i).setY(SCREEN_HEIGHT-50);
                 //Bricks
-                bricks.add(new Brick(x+5, (int) (SCREEN_HEIGHT-500),lineWidth-10,40,BrickColors[i]));
+                bricks.add(new Brick(x+5, (int) (SCREEN_HEIGHT-500),lineWidth-10,40,BrickColors[i],i));
             }
         }
 
@@ -100,6 +107,7 @@ public class GameScene extends BaseScene {
 
     @Override
     public void start() {
+
 
 
 
@@ -129,7 +137,83 @@ public class GameScene extends BaseScene {
     }
 
     private void update(double deltaInSec) {
+        for (Brick brick : bricks) {
+            brick.update(deltaInSec);
+        }
+        checkKeys();
 
+
+
+
+    }
+
+    private void checkKeys() {
+        this.setOnKeyPressed(event -> {
+            switch (event.getCode()) {
+                case A -> A_KeyPressed = true;
+                case S -> S_KeyPressed = true;
+                case D -> D_KeyPressed = true;
+                case F -> F_KeyPressed = true;
+                case G -> G_KeyPressed = true;
+            }
+        });
+
+        this.setOnKeyReleased(event -> {
+            switch (event.getCode()) {
+                case A -> A_KeyPressed = false;
+                case S -> S_KeyPressed = false;
+                case D -> D_KeyPressed = false;
+                case F -> F_KeyPressed = false;
+                case G -> G_KeyPressed = false;
+            }
+        });
+
+        if (A_KeyPressed){
+            rectangles.get(0).setFill(Color.WHITESMOKE);
+            ArrayList<Brick> deadBricks = new ArrayList<>();
+            for (Brick brick : bricks) {
+                    if(brick.getLine() == 0){
+                        if(brick.getY() + 10 >= rectangles.get(0).getY() && brick.getY() - 10 >= rectangles.get(0).getY() && !(brick.getY() > SCREEN_HEIGHT) ){
+                            deadBricks.add(brick);
+                            currentScore+= 200;
+                            score.setText("Score: "+ currentScore);
+                        }
+                    }
+
+            }
+            bricks.removeAll(deadBricks);
+        }
+        if (!A_KeyPressed){
+            rectangles.get(0).setFill(Color.valueOf(Colors[0]));
+        }
+
+        if (S_KeyPressed){
+            rectangles.get(1).setFill(Color.WHITESMOKE);
+        }
+        if (!S_KeyPressed){
+            rectangles.get(1).setFill(Color.valueOf(Colors[1]));
+        }
+
+        if (D_KeyPressed){
+            rectangles.get(2).setFill(Color.WHITESMOKE);
+        }
+        if (!D_KeyPressed){
+            rectangles.get(2).setFill(Color.valueOf(Colors[2]));
+        }
+
+        if (F_KeyPressed){
+            rectangles.get(3).setFill(Color.WHITESMOKE);
+        }
+        if (!F_KeyPressed){
+            rectangles.get(3).setFill(Color.valueOf(Colors[3]));
+        }
+
+        if (G_KeyPressed){
+            rectangles.get(4).setFill(Color.WHITESMOKE);
+        }
+        if (!G_KeyPressed){
+            rectangles.get(4).setFill(Color.valueOf(Colors[4]));
+        }
 
     }
 }
