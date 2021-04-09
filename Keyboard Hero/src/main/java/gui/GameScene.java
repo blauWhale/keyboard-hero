@@ -7,7 +7,8 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-        import javafx.scene.shape.Line;
+import javafx.scene.input.KeyCode;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.paint.*;
@@ -36,8 +37,8 @@ public class GameScene extends BaseScene {
     private ArrayList<Line> lines = new ArrayList<>();
     private ArrayList<Rectangle> rectangles = new ArrayList<>();
 
-    //Notes
-    private List<Brick> bricks = new ArrayList<>();
+    //Music Notes
+    private ArrayList<Brick> bricks = new ArrayList<>();
 
 
 
@@ -72,7 +73,7 @@ public class GameScene extends BaseScene {
             int x = startX + i * lineWith;
             lines.add(new Line(x, 0, x, SCREEN_HEIGHT));
 
-            //Null Exception handler
+            //Null Exception Handler
             if (i!=5){
                 letters.add(new Label(Keys[i]));
                 letters.get(i).setLayoutX(x+25);
@@ -83,20 +84,21 @@ public class GameScene extends BaseScene {
                 rectangles.get(i).setX(x+5);
                 rectangles.get(i).setY(SCREEN_HEIGHT-50);
             }
-
-
         }
 
         //Bricks //TODO
-        bricks.add(new Brick());
+        bricks.add(new Brick(0,100,20,50,GREEN_BRICK));
+
 
         root.getChildren().addAll(lines);
         root.getChildren().addAll(rectangles);
         root.getChildren().addAll(letters);
+        root.getChildren().addAll(bricks);
     }
 
     @Override
     public void start() {
+
 
 
         lastTimeInNanoSec = System.nanoTime();
@@ -125,6 +127,7 @@ public class GameScene extends BaseScene {
     }
 
     private void update(double deltaInSec) {
+
 
     }
 }

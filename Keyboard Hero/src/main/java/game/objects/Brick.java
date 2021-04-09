@@ -1,20 +1,17 @@
 package game.objects;
 
-import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 
-import java.awt.*;
+public class Brick extends Rectangle {
 
-public class Brick {
+    private boolean isDead;
 
-    public boolean isDead;
-    private int x;
-    private int y = -100;
-    private int width = 60;
-    private int height = 30;
-    public Rectangle bounds;
-
-    public Brick() {
-        bounds = new Rectangle(x, y, width, height);
-
+    public Brick(int x, int y, int height, int width, Image image) {
+        super(x, y, width, height);
+        ImagePattern pattern = new ImagePattern(image, x, y, width, height, false);
+        this.setFill(pattern);
     }
 }
