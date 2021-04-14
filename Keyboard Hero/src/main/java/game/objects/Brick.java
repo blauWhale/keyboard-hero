@@ -7,9 +7,7 @@ import javafx.scene.shape.Rectangle;
 
 public class Brick extends Rectangle {
 
-    private boolean isDead;
-    private double speedOfNote = 100;
-
+    private double speedOfNote = 130;
 
     private int line;
 
@@ -22,6 +20,7 @@ public class Brick extends Rectangle {
 
     public void update(double deltaInSec){
         double distanceToMove = speedOfNote * deltaInSec;
+        double distanceMoved = 0;
         this.setY(getY()+ distanceToMove);
     }
 
@@ -31,6 +30,14 @@ public class Brick extends Rectangle {
 
     public void setLine(int line) {
         this.line = line;
+    }
+
+    public double getSpeedOfNote() {
+        return speedOfNote;
+    }
+
+    public void setSpeedOfNote(double speedOfNote) {
+        this.speedOfNote = speedOfNote;
     }
 
 }

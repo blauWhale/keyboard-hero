@@ -8,16 +8,21 @@ import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.CacheHint;
 import javafx.scene.Group;
+import javafx.scene.LightBase;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.paint.*;
+import javafx.util.Duration;
 
-        import java.util.ArrayList;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import static game.Constant.*;
@@ -32,6 +37,7 @@ public class GameScene extends BaseScene {
     //Text
     private Label score = new Label("Score: 0");
     private Label combo = new Label("Combo: 1x");
+    private Label clock = new Label("0:00");
     private int currentScore = 0;
 
     //Letters
@@ -51,6 +57,11 @@ public class GameScene extends BaseScene {
     private boolean F_KeyPressed = false;
     private boolean G_KeyPressed = false;
     private final Group root;
+
+    //Mediaplayer for Sound
+    String musicFile = "src/main/resources/Music/zweiunddreissigtausendMASTER.wav";
+    Media sound = new Media(new File(musicFile).toURI().toString());
+    MediaPlayer mediaPlayer = new MediaPlayer(sound);
 
 
     public GameScene(Navigator navigator) {
@@ -77,6 +88,13 @@ public class GameScene extends BaseScene {
         combo.setFont(Font.font("Arial bold",20));
         root.getChildren().add(combo);
 
+        //Clock
+        clock.setLayoutX(SCREEN_WIDTH - 100);
+        clock.setLayoutY(SCREEN_HEIGHT - 60);
+        clock.setTextFill(Color.BLACK);
+        clock.setFont(Font.font("Arial bold",20));
+        root.getChildren().add(clock);
+
         //Letters & Lines
         int lineWidth = 80;
         int lineCount = 5;
@@ -97,9 +115,12 @@ public class GameScene extends BaseScene {
                 rectangles.get(i).setX(x+5);
                 rectangles.get(i).setY(SCREEN_HEIGHT-50);
 
-
                 //Bricks
                 bricks.addAll(Songs.getSong1());
+
+                //Music
+                mediaPlayer.setVolume(0.8);
+                mediaPlayer.play();
 
             }
         }
@@ -149,6 +170,11 @@ public class GameScene extends BaseScene {
             brick.update(deltaInSec);
         }
         checkKeys();
+
+        Duration time = mediaPlayer.getCurrentTime();
+
+        clock.setText("Time: "+ time.toMinutes());
+
 
 
     }
@@ -220,7 +246,7 @@ public class GameScene extends BaseScene {
             if(brick.getLine() == line){
                 if(brick.getY() + 30 >= rectangles.get(line).getY() && brick.getY() - 30 <= rectangles.get(line).getY() && !(brick.getY() > SCREEN_HEIGHT) ){
                     deadBricks.add(brick);
-                    currentScore+= 200;
+                    currentScore+= 1;
                     score.setText("Score: "+ currentScore);
                 }
             }
@@ -228,6 +254,8 @@ public class GameScene extends BaseScene {
         }
         bricks.removeAll(deadBricks);
         root.getChildren().removeAll(deadBricks);
+
+
     }
 }
 
