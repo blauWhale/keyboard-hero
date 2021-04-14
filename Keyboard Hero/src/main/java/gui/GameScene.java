@@ -1,10 +1,12 @@
 package gui;
 
 //import game.objects.*;
+import game.Songs;
 import game.objects.Brick;
 import gui.common.BaseScene;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
+import javafx.scene.CacheHint;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -48,15 +50,18 @@ public class GameScene extends BaseScene {
     private boolean D_KeyPressed = false;
     private boolean F_KeyPressed = false;
     private boolean G_KeyPressed = false;
+    private final Group root;
 
 
     public GameScene(Navigator navigator) {
         super(navigator, GAME_BACKGROUND);
-        Group root = (Group) getRoot();
-        prepare(root);
+        root = (Group) getRoot();
+        prepare();
     }
 
-    private void prepare(Group root) {
+    private void prepare() {
+
+        root.setCacheHint(CacheHint.SPEED);
 
         //Score
         score.setLayoutX(SCREEN_WIDTH - 100);
@@ -81,7 +86,7 @@ public class GameScene extends BaseScene {
             lines.add(new Line(x, 0, x, SCREEN_HEIGHT));
 
             //Null Exception Handler
-            if (i!=5){
+            if (i < lineCount){
                 letters.add(new Label(Keys[i]));
                 letters.get(i).setLayoutX(x+25);
                 letters.get(i).setLayoutY(SCREEN_HEIGHT - 60);
@@ -91,8 +96,11 @@ public class GameScene extends BaseScene {
                 rectangles.add(new Rectangle(lineWidth-10, 40, Color.valueOf(Colors[i])));
                 rectangles.get(i).setX(x+5);
                 rectangles.get(i).setY(SCREEN_HEIGHT-50);
+
+
                 //Bricks
-                bricks.add(new Brick(x+5, (int) (SCREEN_HEIGHT-500),lineWidth-10,40,BrickColors[i],i));
+                bricks.addAll(Songs.getSong1());
+
             }
         }
 
@@ -143,77 +151,83 @@ public class GameScene extends BaseScene {
         checkKeys();
 
 
-
-
     }
 
     private void checkKeys() {
         this.setOnKeyPressed(event -> {
             switch (event.getCode()) {
-                case A -> A_KeyPressed = true;
-                case S -> S_KeyPressed = true;
-                case D -> D_KeyPressed = true;
-                case F -> F_KeyPressed = true;
-                case G -> G_KeyPressed = true;
+                case A -> {
+                    A_KeyPressed = true;
+                    rectangles.get(0).setFill(Color.WHITESMOKE);
+                    checkBrick(0);
+                }
+                case S -> {
+                    S_KeyPressed = true;
+                    rectangles.get(1).setFill(Color.WHITESMOKE);
+                    checkBrick(1);
+                }
+                case D -> {
+                    D_KeyPressed = true;
+                    rectangles.get(2).setFill(Color.WHITESMOKE);
+                    checkBrick(2);
+                }
+                case F -> {
+                    F_KeyPressed = true;
+                    rectangles.get(3).setFill(Color.WHITESMOKE);
+                    checkBrick(3);
+
+                }
+                case G -> {
+                    G_KeyPressed = true;
+                    rectangles.get(4).setFill(Color.WHITESMOKE);
+                    checkBrick(4);
+                }
             }
         });
+
 
         this.setOnKeyReleased(event -> {
             switch (event.getCode()) {
-                case A -> A_KeyPressed = false;
-                case S -> S_KeyPressed = false;
-                case D -> D_KeyPressed = false;
-                case F -> F_KeyPressed = false;
-                case G -> G_KeyPressed = false;
+                case A -> {
+                    A_KeyPressed = false;
+                    rectangles.get(0).setFill(Color.valueOf(Colors[0]));
+                }
+                case S -> {
+                    S_KeyPressed = false;
+                    rectangles.get(1).setFill(Color.valueOf(Colors[1]));
+                }
+                case D -> {
+                    D_KeyPressed = false;
+                    rectangles.get(2).setFill(Color.valueOf(Colors[2]));
+                }
+                case F -> {
+                    F_KeyPressed = false;
+                    rectangles.get(3).setFill(Color.valueOf(Colors[3]));
+                }
+                case G -> {
+                    G_KeyPressed = false;
+                    rectangles.get(4).setFill(Color.valueOf(Colors[4]));
+                }
             }
         });
 
-        if (A_KeyPressed){
-            rectangles.get(0).setFill(Color.WHITESMOKE);
-            ArrayList<Brick> deadBricks = new ArrayList<>();
-            for (Brick brick : bricks) {
-                    if(brick.getLine() == 0){
-                        if(brick.getY() + 10 >= rectangles.get(0).getY() && brick.getY() - 10 >= rectangles.get(0).getY() && !(brick.getY() > SCREEN_HEIGHT) ){
-                            deadBricks.add(brick);
-                            currentScore+= 200;
-                            score.setText("Score: "+ currentScore);
-                        }
-                    }
-
-            }
-            bricks.removeAll(deadBricks);
-        }
-        if (!A_KeyPressed){
-            rectangles.get(0).setFill(Color.valueOf(Colors[0]));
-        }
-
-        if (S_KeyPressed){
-            rectangles.get(1).setFill(Color.WHITESMOKE);
-        }
-        if (!S_KeyPressed){
-            rectangles.get(1).setFill(Color.valueOf(Colors[1]));
-        }
-
-        if (D_KeyPressed){
-            rectangles.get(2).setFill(Color.WHITESMOKE);
-        }
-        if (!D_KeyPressed){
-            rectangles.get(2).setFill(Color.valueOf(Colors[2]));
-        }
-
-        if (F_KeyPressed){
-            rectangles.get(3).setFill(Color.WHITESMOKE);
-        }
-        if (!F_KeyPressed){
-            rectangles.get(3).setFill(Color.valueOf(Colors[3]));
-        }
-
-        if (G_KeyPressed){
-            rectangles.get(4).setFill(Color.WHITESMOKE);
-        }
-        if (!G_KeyPressed){
-            rectangles.get(4).setFill(Color.valueOf(Colors[4]));
-        }
 
     }
+
+    private void checkBrick(int line){
+        ArrayList<Brick> deadBricks = new ArrayList<>();
+        for (Brick brick : bricks) {
+            if(brick.getLine() == line){
+                if(brick.getY() + 30 >= rectangles.get(line).getY() && brick.getY() - 30 <= rectangles.get(line).getY() && !(brick.getY() > SCREEN_HEIGHT) ){
+                    deadBricks.add(brick);
+                    currentScore+= 200;
+                    score.setText("Score: "+ currentScore);
+                }
+            }
+
+        }
+        bricks.removeAll(deadBricks);
+        root.getChildren().removeAll(deadBricks);
+    }
 }
+
