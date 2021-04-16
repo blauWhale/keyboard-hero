@@ -23,9 +23,6 @@ public class Brick extends Rectangle {
     public void update(double deltaInSec){
         double distanceToMove = speedOfNote * deltaInSec;
         this.setY(getY()+ distanceToMove);
-        if(this.getY() > SCREEN_HEIGHT && this.getY() < SCREEN_HEIGHT+5){
-            System.out.println("Missed");
-        }
     }
 
     public int getLine() {

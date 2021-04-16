@@ -6,12 +6,12 @@ game/Images.java
  game.Images
 game/Constant.java
  game.Constant
+gui/Navigator.java
+ gui.Navigator
 game/objects/Brick.java
  game.objects.Brick
 game/Songs.java
  game.Songs
-gui/Navigator.java
- gui.Navigator
 main/KeyboardHeroApp.java
  main.KeyboardHeroApp
  main.KeyboardHeroApp$1

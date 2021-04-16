@@ -155,7 +155,7 @@ public class GameScene extends BaseScene {
                 update(deltaInSec);
 
                 if(currentTimeMs > nextSecond){
-                    //System.out.println(fps);
+                    System.out.println(fps);
                     fps = 0;
                     nextSecond = currentTimeMs + 1000000000L;
                 }
@@ -212,13 +212,28 @@ public class GameScene extends BaseScene {
 
         for (Brick brick : bricks) {
             brick.update(deltaInSec);
+            checkIfBrickDead(brick);
         }
+
+
         Duration time = mediaPlayer.getCurrentTime();
         clock.setText("Time: "+ time.toSeconds());
 
 
 
 
+    }
+
+    private void checkIfBrickDead(Brick brick) {
+        ArrayList<Brick> deadBricks = new ArrayList<>();
+        if (brick.getY()>SCREEN_HEIGHT){
+            deadBricks.add(brick);
+            currentScore-=10;
+            score.setText("Score: "+ currentScore);
+            System.out.println("Missed");
+        }
+        bricks.removeAll(deadBricks);
+        root.getChildren().removeAll(deadBricks);
     }
 
     private void registerKeyHandlers() {
@@ -282,14 +297,14 @@ public class GameScene extends BaseScene {
 
         for (Brick brick : bricks) {
             if(brick.getLine() == line){
-                boolean perfectHit = brick.getY() <= rectangles.get(line).getY() + 20 && brick.getY() >= rectangles.get(line).getY() - 20;
-                //BrickY is between 680 and 720
-                boolean littleTooLate = brick.getY() >= rectangles.get(line).getY() + 20 && brick.getY() <= rectangles.get(line).getY() + 40;
-                //BrickY is between 720 and 740
-                boolean littleTooEarly = brick.getY() >= rectangles.get(line).getY() - 40 && brick.getY() <= rectangles.get(line).getY()  - 20;
-                //BrickY is between 680 and 660
-                boolean missed = brick.getY() < rectangles.get(line).getY() - 40 || brick.getY() > rectangles.get(line).getY()  + 40;
-                //BrickY is under 660 and over 740
+                boolean perfectHit = brick.getY() <= rectangles.get(line).getY() + 10 && brick.getY() >= rectangles.get(line).getY() - 10;
+                //BrickY is between 690 and 710
+                boolean littleTooLate = brick.getY() >= rectangles.get(line).getY() + 10 && brick.getY() <= rectangles.get(line).getY() + 50;
+                //BrickY is between 710 and 750
+                boolean littleTooEarly = brick.getY() >= rectangles.get(line).getY() - 50 && brick.getY() <= rectangles.get(line).getY()  - 10;
+                //BrickY is between 690 and 650
+                boolean missed = brick.getY() > SCREEN_HEIGHT;
+                //BrickY is (under 650 and) over 750
                 if(perfectHit){
                     deadBricks.add(brick);
                     currentScore+= 100;
@@ -311,12 +326,13 @@ public class GameScene extends BaseScene {
                     System.out.println("Early");
                     break;
                 }
-                /*if(missed){
+                if(missed){
+                    deadBricks.add(brick);
                     currentScore-= 10;
                     score.setText("Score: "+ currentScore);
                     System.out.println("Missed");
                     break;
-                }*/
+                }
 
 
             }

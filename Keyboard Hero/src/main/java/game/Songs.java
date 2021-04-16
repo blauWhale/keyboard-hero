@@ -19,6 +19,11 @@ public class Songs {
 
                 //Buildup
             bricks.add(new Brick(105, calculateY(44.309),70,40,BrickColors[0],0));
+            bricks.add(new Brick(105, calculateY(45.051),70,40,BrickColors[0],0));
+            bricks.add(new Brick(105, calculateY(45.960),70,40,BrickColors[0],0));
+            bricks.add(new Brick(105, calculateY(48.037),70,40,BrickColors[0],0));
+            bricks.add(new Brick(105, calculateY(48.737),70,40,BrickColors[0],0));
+            bricks.add(new Brick(105, calculateY(49.424),70,40,BrickColors[0],0));
 
             //Red Notes
                 //Intro
@@ -38,8 +43,6 @@ public class Songs {
             bricks.add(new Brick(185, calculateY(34.154),70,40,BrickColors[1],1));
             bricks.add(new Brick(185, calculateY(34.616),70,40,BrickColors[1],1));
             bricks.add(new Brick(185, calculateY(35.076),70,40,BrickColors[1],1));
-            bricks.add(new Brick(185, calculateY(35.076),70,40,BrickColors[1],1));
-            bricks.add(new Brick(185, calculateY(35.538),70,40,BrickColors[1],1));
             bricks.add(new Brick(185, calculateY(35.538),70,40,BrickColors[1],1));
             bricks.add(new Brick(185, calculateY(36.000),70,40,BrickColors[1],1));
             bricks.add(new Brick(185, calculateY(36.345),70,40,BrickColors[1],1));
@@ -54,24 +57,27 @@ public class Songs {
             bricks.add(new Brick(185, calculateY(40.616),70,40,BrickColors[1],1));
             bricks.add(new Brick(185, calculateY(40.960),70,40,BrickColors[1],1));
             bricks.add(new Brick(185, calculateY(41.538),70,40,BrickColors[1],1));
-            bricks.add(new Brick(185, calculateY(41.538),70,40,BrickColors[1],1));
             bricks.add(new Brick(185, calculateY(42.000),70,40,BrickColors[1],1));
             bricks.add(new Brick(185, calculateY(42.461),70,40,BrickColors[1],1));
             bricks.add(new Brick(185, calculateY(42.924),70,40,BrickColors[1],1));
             bricks.add(new Brick(185, calculateY(43.385),70,40,BrickColors[1],1));
             bricks.add(new Brick(185, calculateY(43.730),70,40,BrickColors[1],1));
-            bricks.add(new Brick(185, calculateY(43.385),70,40,BrickColors[1],1));
 
                 //Buildup
 
             bricks.add(new Brick(185, calculateY(44.798),70,40,BrickColors[1],1));
+            bricks.add(new Brick(185, calculateY(45.494),70,40,BrickColors[1],1));
+            bricks.add(new Brick(185, calculateY(48.504),70,40,BrickColors[1],1));
+            bricks.add(new Brick(185, calculateY(49.195),70,40,BrickColors[1],1));
+            bricks.add(new Brick(185, calculateY(49.653),70,40,BrickColors[1],1));
 
 
             //Yellow Notes
                 //Intro
             bricks.add(new Brick(265, calculateY(9.457),70,40,BrickColors[2],2));
                 //Buildup
-            bricks.add(new Brick(265, calculateY(9.457),70,40,BrickColors[2],2));
+            bricks.add(new Brick(265, calculateY(46.191),70,40,BrickColors[2],2));
+            bricks.add(new Brick(265, calculateY(49.882),70,40,BrickColors[2],2));
 
             //Blue Notes
 
