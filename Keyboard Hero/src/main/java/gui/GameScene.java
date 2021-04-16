@@ -1,7 +1,9 @@
 package gui;
 
 //import game.objects.*;
+import game.Songlist;
 import game.Songs;
+import game.Sound;
 import game.objects.Brick;
 import gui.common.BaseScene;
 import javafx.animation.Animation;
@@ -31,7 +33,8 @@ public class GameScene extends BaseScene {
 
     //Animation
     private long lastTimeInMs;
-    private AnimationTimer timer;
+    private int fps;
+    private long nextSecond;
 
     //Text
     private Label score = new Label("Score: 0");
@@ -57,12 +60,6 @@ public class GameScene extends BaseScene {
     private boolean G_KeyPressed = false;
     private final Group root;
 
-    //Mediaplayer for Sound
-    String musicFile = "src/main/resources/Music/zweiunddreissigtausendMASTER.wav";
-    Media sound = new Media(new File(musicFile).toURI().toString());
-    MediaPlayer mediaPlayer = new MediaPlayer(sound);
-    private int fps;
-    private long nextSecond;
 
 
     public GameScene(Navigator navigator) {
@@ -119,9 +116,6 @@ public class GameScene extends BaseScene {
                 //Bricks
                 bricks.addAll(Songs.getSong1());
 
-                //Music
-                mediaPlayer.setVolume(0.8);
-                mediaPlayer.play();
 
             }
         }
@@ -163,6 +157,7 @@ public class GameScene extends BaseScene {
         }));
         looper.setCycleCount(Animation.INDEFINITE);
         looper.play();
+        Sound.play(Songlist.ZDTF1);
 
 
 
@@ -212,11 +207,11 @@ public class GameScene extends BaseScene {
 
         for (Brick brick : bricks) {
             brick.update(deltaInSec);
-            checkIfBrickDead(brick);
+            //checkIfBrickDead(brick);
         }
 
 
-        Duration time = mediaPlayer.getCurrentTime();
+        Duration time = Sound.getSongTime();
         clock.setText("Time: "+ time.toSeconds());
 
 
@@ -226,12 +221,12 @@ public class GameScene extends BaseScene {
 
     private void checkIfBrickDead(Brick brick) {
         ArrayList<Brick> deadBricks = new ArrayList<>();
-        if (brick.getY()>SCREEN_HEIGHT){
-            deadBricks.add(brick);
-            currentScore-=10;
-            score.setText("Score: "+ currentScore);
-            System.out.println("Missed");
-        }
+            if (brick.getY()>SCREEN_HEIGHT){
+                deadBricks.add(brick);
+                currentScore-=10;
+                score.setText("Score: "+ currentScore);
+                System.out.println("Missed");
+            }
         bricks.removeAll(deadBricks);
         root.getChildren().removeAll(deadBricks);
     }

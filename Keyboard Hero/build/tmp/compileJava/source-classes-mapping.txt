@@ -1,21 +1,28 @@
-gui/SceneType.java
- gui.SceneType
-gui/common/BaseScene.java
- gui.common.BaseScene
-game/Images.java
- game.Images
-game/Constant.java
- game.Constant
-gui/Navigator.java
- gui.Navigator
+game/Sound.java
+ game.Sound
+ game.Sound$1
 game/objects/Brick.java
  game.objects.Brick
+gui/SceneType.java
+ gui.SceneType
+game/Songlist.java
+ game.Songlist
+gui/common/BaseScene.java
+ gui.common.BaseScene
 game/Songs.java
  game.Songs
-main/KeyboardHeroApp.java
- main.KeyboardHeroApp
- main.KeyboardHeroApp$1
+gui/Navigator.java
+ gui.Navigator
 gui/GameScene.java
  gui.GameScene
  gui.GameScene$1
  gui.GameScene$2
+game/Images.java
+ game.Images
+game/Constant.java
+ game.Constant
+gui/StartScene.java
+ gui.StartScene
+main/KeyboardHeroApp.java
+ main.KeyboardHeroApp
+ main.KeyboardHeroApp$1
