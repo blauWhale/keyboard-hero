@@ -13,16 +13,18 @@ game/Songs.java
  game.Songs
 gui/Navigator.java
  gui.Navigator
-gui/GameScene.java
- gui.GameScene
- gui.GameScene$1
- gui.GameScene$2
+gui/StartScene.java
+ gui.StartScene
 game/Images.java
  game.Images
 game/Constant.java
  game.Constant
-gui/StartScene.java
- gui.StartScene
+gui/GameOverScene.java
+ gui.GameOverScene
 main/KeyboardHeroApp.java
  main.KeyboardHeroApp
  main.KeyboardHeroApp$1
+gui/GameScene.java
+ gui.GameScene
+ gui.GameScene$1
+ gui.GameScene$2

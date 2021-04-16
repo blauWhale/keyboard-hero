@@ -214,7 +214,9 @@ public class GameScene extends BaseScene {
         Duration time = Sound.getSongTime();
         clock.setText("Time: "+ time.toSeconds());
 
-
+        if (time.toSeconds() > 55){
+            navigator.goTo(SceneType.GAMEOVER_SCREEN);
+        }
 
 
     }
