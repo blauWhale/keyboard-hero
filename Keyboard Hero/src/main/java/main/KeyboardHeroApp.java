@@ -33,7 +33,7 @@ public class KeyboardHeroApp extends Application {
 
         navigator.registerScene(SceneType.START_SCREEN, new StartScene(navigator));
         navigator.registerScene(SceneType.GAMEOVER_SCREEN, new GameOverScene(navigator));
-        //navigator.registerScene(SceneType.WINNER_SCREEN, new WinnerScene(navigator));
+        navigator.registerScene(SceneType.WINNER_SCREEN, new WinnerScene(navigator));
         navigator.registerScene(SceneType.GAME_SCREEN, new GameScene(navigator));
 
         navigator.goTo(SceneType.START_SCREEN);

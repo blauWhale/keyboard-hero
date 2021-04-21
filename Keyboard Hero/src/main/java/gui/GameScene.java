@@ -7,7 +7,6 @@ import game.Sound;
 import game.objects.Brick;
 import gui.common.BaseScene;
 import javafx.animation.Animation;
-import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -15,32 +14,38 @@ import javafx.event.EventHandler;
 import javafx.scene.CacheHint;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.paint.*;
 import javafx.util.Duration;
 
-import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import static game.Constant.*;
 import static game.Images.*;
 
 public class GameScene extends BaseScene {
 
+    private final Group root;
+
     //Animation
     private long lastTimeInMs;
     private int fps;
     private long nextSecond;
+    private Timeline looper;
 
     //Text
-    private Label score = new Label("Score: 0");
-    private Label combo = new Label("Combo: 1x");
+    private Label score = new Label();
+    private Label streak = new Label();
     private Label clock = new Label("0:00");
+
+
+
     private int currentScore = 0;
+    private int finalScore = 0;
+    private int currentStreak = 1;
 
     //Letters
     private ArrayList<Label> letters = new ArrayList<>();
@@ -50,7 +55,9 @@ public class GameScene extends BaseScene {
     private ArrayList<Rectangle> rectangles = new ArrayList<>();
 
     //Music Notes
-    private ArrayList<Brick> bricks = new ArrayList<>();
+    private LinkedList<Brick> bricks = new LinkedList<>();
+    private ArrayList<Brick> deadBricks = new ArrayList<>();
+    private int currentMissedNotes = 0;
 
     //KeyHandler
     private boolean A_KeyPressed = false;
@@ -58,21 +65,31 @@ public class GameScene extends BaseScene {
     private boolean D_KeyPressed = false;
     private boolean F_KeyPressed = false;
     private boolean G_KeyPressed = false;
-    private final Group root;
+
+
+
 
 
 
     public GameScene(Navigator navigator) {
         super(navigator, GAME_BACKGROUND);
         root = (Group) getRoot();
-        prepare();
     }
 
-    private void prepare() {
+    @Override
+    protected void prepare() {
+        super.prepare();
+
+        letters.clear();
+        lines.clear();
+        rectangles.clear();
+        bricks.clear();
 
         root.setCacheHint(CacheHint.DEFAULT);
 
         //Score
+        currentScore = 0;
+        score.setText("Score: "+ currentScore);
         score.setLayoutX(SCREEN_WIDTH - 100);
         score.setLayoutY(SCREEN_HEIGHT - 100);
         score.setTextFill(Color.BLACK);
@@ -80,11 +97,16 @@ public class GameScene extends BaseScene {
         root.getChildren().add(score);
 
         //Combo
-        combo.setLayoutX(SCREEN_WIDTH - 100);
-        combo.setLayoutY(SCREEN_HEIGHT - 80);
-        combo.setTextFill(Color.BLACK);
-        combo.setFont(Font.font("Arial bold",20));
-        root.getChildren().add(combo);
+        currentStreak = 0;
+        streak.setText("Streak: "+ currentStreak +"x");
+        streak.setLayoutX(SCREEN_WIDTH - 100);
+        streak.setLayoutY(SCREEN_HEIGHT - 80);
+        streak.setTextFill(Color.BLACK);
+        streak.setFont(Font.font("Arial bold",20));
+        root.getChildren().add(streak);
+
+
+
 
         //Clock
         clock.setLayoutX(SCREEN_WIDTH - 100);
@@ -113,15 +135,14 @@ public class GameScene extends BaseScene {
                 rectangles.get(i).setX(x+5);
                 rectangles.get(i).setY(SCREEN_HEIGHT-50);
 
-                //Bricks
-                bricks.addAll(Songs.getSong1());
+
 
 
             }
         }
 
-
-
+        //Bricks
+        bricks.addAll(Songs.getSong1());
 
         root.getChildren().addAll(lines);
         root.getChildren().addAll(rectangles);
@@ -133,9 +154,10 @@ public class GameScene extends BaseScene {
 
     @Override
     public void start() {
+        prepare();
 
         lastTimeInMs = System.nanoTime();
-        Timeline looper = new Timeline();
+        looper = new Timeline();
         fps = 0;
         nextSecond = 0;
         looper.getKeyFrames().add(new KeyFrame(Duration.millis(16), new EventHandler<ActionEvent>() {
@@ -149,7 +171,6 @@ public class GameScene extends BaseScene {
                 update(deltaInSec);
 
                 if(currentTimeMs > nextSecond){
-                    System.out.println(fps);
                     fps = 0;
                     nextSecond = currentTimeMs + 1000000000L;
                 }
@@ -160,31 +181,13 @@ public class GameScene extends BaseScene {
         Sound.play(Songlist.ZDTF1);
 
 
-
-       /* lastTimeInMs = System.nanoTime();
-        timer = new AnimationTimer() {
-            @Override
-            public void handle(long currentTimeInNanoSec) {
-                long deltaInNanoSec = currentTimeInNanoSec - lastTimeInMs;
-                double deltaInSec = deltaInNanoSec / 1000000000d;
-                lastTimeInMs = currentTimeInNanoSec;
-                update(deltaInSec);
-            }
-        };
-        timer.start();*/
-
-
     }
 
     @Override
     public void stop() {
+        looper.stop();
     }
 
-
-    private void paint() {
-        gc.drawImage(GAME_BACKGROUND, 0, 0);
-
-    }
 
     private void update(double deltaInSec) {
 
@@ -204,33 +207,36 @@ public class GameScene extends BaseScene {
             checkBrick(4);
         }
 
-
         for (Brick brick : bricks) {
             brick.update(deltaInSec);
-            //checkIfBrickDead(brick);
+            if(brick.getY()>SCREEN_HEIGHT+20){
+                deadBricks.add(brick);
+                currentScore-= 10;
+                currentStreak = 1;
+                currentMissedNotes+=1;
+                score.setText("Score: "+ currentScore);
+                streak.setText("Combo: "+ currentStreak +"x");
+            }
         }
+
 
 
         Duration time = Sound.getSongTime();
-        clock.setText("Time: "+ time.toSeconds());
+        clock.setText(String.format("Time: %.2f", time.toSeconds()));
 
-        if (time.toSeconds() > 55){
+        if (currentMissedNotes == 5){
             navigator.goTo(SceneType.GAMEOVER_SCREEN);
         }
 
+        if (time.toSeconds() >= 60){
+            finalScore = currentScore;
+            navigator.goTo(SceneType.WINNER_SCREEN);
+        }
 
-    }
 
-    private void checkIfBrickDead(Brick brick) {
-        ArrayList<Brick> deadBricks = new ArrayList<>();
-            if (brick.getY()>SCREEN_HEIGHT){
-                deadBricks.add(brick);
-                currentScore-=10;
-                score.setText("Score: "+ currentScore);
-                System.out.println("Missed");
-            }
         bricks.removeAll(deadBricks);
         root.getChildren().removeAll(deadBricks);
+        deadBricks.clear();
     }
 
     private void registerKeyHandlers() {
@@ -290,44 +296,51 @@ public class GameScene extends BaseScene {
     }
 
     private void checkBrick(int line){
-        ArrayList<Brick> deadBricks = new ArrayList<>();
-
         for (Brick brick : bricks) {
             if(brick.getLine() == line){
-                boolean perfectHit = brick.getY() <= rectangles.get(line).getY() + 10 && brick.getY() >= rectangles.get(line).getY() - 10;
-                //BrickY is between 690 and 710
-                boolean littleTooLate = brick.getY() >= rectangles.get(line).getY() + 10 && brick.getY() <= rectangles.get(line).getY() + 50;
+                boolean perfectHit = brick.getY() <= rectangles.get(line).getY() + 10 && brick.getY() >= rectangles.get(line).getY() - 20;
+                //BrickY is between 680 and 710
+                boolean littleTooLate = brick.getY() >= rectangles.get(line).getY() + 10 && brick.getY() <= SCREEN_HEIGHT;
                 //BrickY is between 710 and 750
-                boolean littleTooEarly = brick.getY() >= rectangles.get(line).getY() - 50 && brick.getY() <= rectangles.get(line).getY()  - 10;
-                //BrickY is between 690 and 650
-                boolean missed = brick.getY() > SCREEN_HEIGHT;
+                boolean littleTooEarly = brick.getY() >= rectangles.get(line).getY() - 50 && brick.getY() <= rectangles.get(line).getY()  - 20;
+                //BrickY is between 680 and 650
+                boolean missed = !perfectHit && !littleTooLate && !littleTooEarly && brick.getY() > SCREEN_HEIGHT || brick.getY() < SCREEN_HEIGHT-100;
                 //BrickY is (under 650 and) over 750
                 if(perfectHit){
                     deadBricks.add(brick);
                     currentScore+= 100;
+                    currentStreak += 1;
+                    currentMissedNotes = 0;
                     score.setText("Score: "+ currentScore);
+                    streak.setText("Combo: "+ currentStreak +"x");
                     System.out.println("Perfect");
                     break;
                 }
                 if(littleTooLate){
                     deadBricks.add(brick);
                     currentScore+= 50;
+                    currentStreak += 1;
+                    currentMissedNotes = 0;
                     score.setText("Score: "+ currentScore);
+                    streak.setText("Combo: "+ currentStreak +"x");
                     System.out.println("Late");
                     break;
                 }
                 if(littleTooEarly){
                     deadBricks.add(brick);
                     currentScore+= 50;
+                    currentStreak += 1;
+                    currentMissedNotes = 0;
                     score.setText("Score: "+ currentScore);
+                    streak.setText("Combo: "+ currentStreak +"x");
                     System.out.println("Early");
                     break;
                 }
                 if(missed){
-                    deadBricks.add(brick);
                     currentScore-= 10;
+                    currentStreak = 1;
                     score.setText("Score: "+ currentScore);
-                    System.out.println("Missed");
+                    streak.setText("Combo: "+ currentStreak +"x");
                     break;
                 }
 
@@ -335,10 +348,25 @@ public class GameScene extends BaseScene {
             }
 
         }
-        bricks.removeAll(deadBricks);
-        root.getChildren().removeAll(deadBricks);
-
-
+        resetKeyes();
     }
+
+    private void resetKeyes() {
+        A_KeyPressed = false;
+        S_KeyPressed = false;
+        D_KeyPressed = false;
+        F_KeyPressed = false;
+        G_KeyPressed = false;
+    }
+
+    public int getFinalScore() {
+        return finalScore;
+    }
+
+    public void setFinalScore(int finalScore) {
+        this.finalScore = finalScore;
+    }
+
+
 }
 

@@ -38,4 +38,8 @@ public abstract class BaseScene extends Scene {
     public abstract void stop();
 
 
+    protected void prepare(){
+        ((Group)getRoot()).getChildren().clear();
+        ((Group)getRoot()).getChildren().add(canvas);
+    }
 }

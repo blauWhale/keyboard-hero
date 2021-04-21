@@ -21,9 +21,13 @@ public class Sound {
             return;
 
         musicPlayer = createMediaPlayer(getMusicFileName(music));
+
         musicPlayer.setVolume(0.5);
         musicPlayer.play();
+
     }
+
+
 
 
     private static MediaPlayer createMediaPlayer(String filePath){
@@ -61,5 +65,9 @@ public class Sound {
 
     public static Duration getSongTime(){
         return musicPlayer.getCurrentTime();
+    }
+
+    public static Duration getSongDuration(){
+        return musicPlayer.getMedia().getDuration();
     }
 }
