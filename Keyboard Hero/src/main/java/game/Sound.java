@@ -12,7 +12,10 @@ public class Sound {
     private static MediaPlayer musicPlayer;
     private final static Map<String, Media> cache = new HashMap<>();
 
-    public static void play(Songlist music) {
+    public static void play(Songlist music){
+        play(music, () -> {});
+    }
+    public static void play(Songlist music, Runnable runOnReady) {
         if (musicPlayer != null) {
             musicPlayer.stop();
         }
@@ -22,7 +25,8 @@ public class Sound {
 
         musicPlayer = createMediaPlayer(getMusicFileName(music));
 
-        musicPlayer.setVolume(0.5);
+        musicPlayer.setOnReady(runOnReady);
+        musicPlayer.setVolume(0.2);
         musicPlayer.play();
 
     }

@@ -44,7 +44,7 @@ public class GameScene extends BaseScene {
 
 
     private int currentScore = 0;
-    private int finalScore = 0;
+    private static int finalScore = 0;
     private int currentStreak = 1;
 
     //Letters
@@ -177,9 +177,12 @@ public class GameScene extends BaseScene {
             }
         }));
         looper.setCycleCount(Animation.INDEFINITE);
-        looper.play();
-        Sound.play(Songlist.ZDTF1);
-
+        Sound.play(Songlist.ZDTF1, new Runnable() {
+            @Override
+            public void run() {
+                looper.play();
+            }
+        });
 
     }
 
@@ -224,12 +227,12 @@ public class GameScene extends BaseScene {
         Duration time = Sound.getSongTime();
         clock.setText(String.format("Time: %.2f", time.toSeconds()));
 
-        if (currentMissedNotes == 5){
-            navigator.goTo(SceneType.GAMEOVER_SCREEN);
+        if (currentMissedNotes == 50){
+            //navigator.goTo(SceneType.GAMEOVER_SCREEN);
         }
 
-        if (time.toSeconds() >= 60){
-            finalScore = currentScore;
+        if (time.toSeconds() >= Sound.getSongDuration().toSeconds()){
+            GameScene.finalScore = currentScore;
             navigator.goTo(SceneType.WINNER_SCREEN);
         }
 
@@ -359,7 +362,7 @@ public class GameScene extends BaseScene {
         G_KeyPressed = false;
     }
 
-    public int getFinalScore() {
+    public static int getFinalScore() {
         return finalScore;
     }
 

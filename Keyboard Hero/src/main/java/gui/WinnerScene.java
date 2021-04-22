@@ -25,15 +25,15 @@ public class WinnerScene extends BaseScene {
 
     }
 
-    private Label finalscore = new Label("1000 "+"Points");
+
 
     @Override
     public void start() {
         Sound.play(Songlist.BACKGROUND);
-
         Group root = (Group) getRoot();
         root.getChildren().clear();
         super.prepare();
+        Label finalscore = new Label(GameScene.getFinalScore() +" Points");
         finalscore.setLayoutX(SCREEN_WIDTH /2 - 50);
         finalscore.setLayoutY(SCREEN_HEIGHT - 250);
         finalscore.setTextFill(Color.BLACK);
