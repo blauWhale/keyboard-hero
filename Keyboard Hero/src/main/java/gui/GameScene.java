@@ -5,12 +5,15 @@ import game.Songlist;
 import game.Songs;
 import game.Sound;
 import game.objects.Brick;
+import game.objects.SideText;
 import gui.common.BaseScene;
 import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Side;
 import javafx.scene.CacheHint;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
@@ -20,7 +23,9 @@ import javafx.scene.text.Font;
 import javafx.scene.paint.*;
 import javafx.util.Duration;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 import static game.Constant.*;
@@ -43,6 +48,7 @@ public class GameScene extends BaseScene {
 
 
 
+
     private int currentScore = 0;
     private static int finalScore = 0;
     private int currentStreak = 1;
@@ -58,6 +64,9 @@ public class GameScene extends BaseScene {
     private LinkedList<Brick> bricks = new LinkedList<>();
     private ArrayList<Brick> deadBricks = new ArrayList<>();
     private int currentMissedNotes = 0;
+
+    //Sidetexts
+    private ArrayList<SideText> sidetexts = new ArrayList<>();
 
     //KeyHandler
     private boolean A_KeyPressed = false;
@@ -104,8 +113,6 @@ public class GameScene extends BaseScene {
         streak.setTextFill(Color.BLACK);
         streak.setFont(Font.font("Arial bold",20));
         root.getChildren().add(streak);
-
-
 
 
         //Clock
@@ -220,8 +227,31 @@ public class GameScene extends BaseScene {
                 currentMissedNotes+=1;
                 score.setText("Score: "+ currentScore);
                 streak.setText("Combo: "+ currentStreak +"x");
+
+                sidetexts.add(new SideText(0));
+
             }
         }
+
+        for (Iterator<SideText> it = sidetexts.iterator(); it.hasNext(); ) {
+
+            SideText sideText = it.next();
+            sideText.update(deltaInSec);
+
+            if(!root.getChildren().contains(sideText)){
+                root.getChildren().add(sideText);
+            }
+
+
+            if(sideText.finished()){
+                it.remove();
+                root.getChildren().remove(sideText);
+            }
+        }
+
+
+
+
 
 
 
@@ -230,7 +260,7 @@ public class GameScene extends BaseScene {
         Duration time = Sound.getSongTime();
         clock.setText(String.format("Time: %.2f", time.toSeconds()));
 
-        if (currentMissedNotes == 50){
+        if (currentMissedNotes >= 5){
             //navigator.goTo(SceneType.GAMEOVER_SCREEN);
         }
 
@@ -330,7 +360,9 @@ public class GameScene extends BaseScene {
                     score.setText("Score: "+ currentScore);
                     streak.setText("Combo: "+ currentStreak +"x");
                     System.out.println("Perfect");
+                    sidetexts.add(new SideText(3));
                     break;
+
                 }
                 if(littleTooLate){
                     deadBricks.add(brick);
@@ -340,6 +372,7 @@ public class GameScene extends BaseScene {
                     score.setText("Score: "+ currentScore);
                     streak.setText("Combo: "+ currentStreak +"x");
                     System.out.println("Late");
+                    sidetexts.add(new SideText(2));
                     break;
                 }
                 if(littleTooEarly){
@@ -350,6 +383,7 @@ public class GameScene extends BaseScene {
                     score.setText("Score: "+ currentScore);
                     streak.setText("Combo: "+ currentStreak +"x");
                     System.out.println("Early");
+                    sidetexts.add(new SideText(1));
                     break;
                 }
                 if(missed){
@@ -357,6 +391,7 @@ public class GameScene extends BaseScene {
                     currentStreak = 1;
                     score.setText("Score: "+ currentScore);
                     streak.setText("Combo: "+ currentStreak +"x");
+                    sidetexts.add(new SideText(0));
                     break;
                 }
 
