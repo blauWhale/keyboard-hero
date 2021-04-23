@@ -26,7 +26,7 @@ public class Sound {
         musicPlayer = createMediaPlayer(getMusicFileName(music));
 
         musicPlayer.setOnReady(runOnReady);
-        musicPlayer.setVolume(0.2);
+        musicPlayer.setVolume(1.0);
         musicPlayer.play();
 
     }
@@ -74,4 +74,12 @@ public class Sound {
     public static Duration getSongDuration(){
         return musicPlayer.getMedia().getDuration();
     }
+
+    public static void pause(){
+        musicPlayer.pause();
+    }
+    public static void continuePlay(){
+        musicPlayer.play();
+    }
+
 }

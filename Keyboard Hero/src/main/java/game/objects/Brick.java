@@ -9,15 +9,16 @@ import static game.Constant.SCREEN_HEIGHT;
 
 public class Brick extends Rectangle {
 
-    private double speedOfNote = 130;
+    private int speedOfNote;
 
     private int line;
 
-    public Brick(int x, int y, int width, int height, Image image, int line) {
+    public Brick(int x, int y, int width, int height, Image image, int line, int speed) {
         super(x, y, width, height);
         ImagePattern pattern = new ImagePattern(image);
         this.setFill(pattern);
         this.line = line;
+        this.speedOfNote = speed;
     }
 
     public void update(double deltaInSec){
@@ -33,12 +34,5 @@ public class Brick extends Rectangle {
         this.line = line;
     }
 
-    public double getSpeedOfNote() {
-        return speedOfNote;
-    }
-
-    public void setSpeedOfNote(double speedOfNote) {
-        this.speedOfNote = speedOfNote;
-    }
 
 }

@@ -184,6 +184,7 @@ public class GameScene extends BaseScene {
             }
         });
 
+
     }
 
     @Override
@@ -221,6 +222,8 @@ public class GameScene extends BaseScene {
                 streak.setText("Combo: "+ currentStreak +"x");
             }
         }
+
+
 
 
 
@@ -265,6 +268,16 @@ public class GameScene extends BaseScene {
                 case G -> {
                     rectangles.get(4).setFill(Color.WHITESMOKE);
                     G_KeyPressed = true;
+                }
+
+                case SPACE -> {
+                    looper.pause();
+                    Sound.pause();
+                }
+                case ENTER -> {
+                    lastTimeInMs = System.nanoTime();
+                    looper.play();
+                    Sound.continuePlay();
                 }
             }
         });
