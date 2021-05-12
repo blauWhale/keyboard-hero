@@ -2,7 +2,7 @@ package game;
 
 public enum Songlist {
     ZDTF1,
-    ZDTF2,
+    SAWM,
     INORBIT,
     BACKGROUND,
     STOP

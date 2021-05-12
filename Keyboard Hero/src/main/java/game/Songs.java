@@ -330,6 +330,63 @@ public class Songs {
 
         return bricks;
     }
+    public static ArrayList<Brick> getSong2(){
+        ArrayList<Brick> bricks = new ArrayList<>();
+        speed = 130;
+        //Green Notes
+        bricks.add(new Brick(105, calculateY(3.165),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(4.793),70,40,BrickColors[0],0, speed));
+            //Solo
+        bricks.add(new Brick(105, calculateY(9.486),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(10.429),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(10.891),70,40,BrickColors[0],0, speed));
+
+        //Red Notes
+        bricks.add(new Brick(185, calculateY(3.166),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(4.794),70,40,BrickColors[1],1, speed));
+            //Solo
+        bricks.add(new Brick(185, calculateY(9.716),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(10.658),70,40,BrickColors[1],1, speed));
+
+        //Yellow Notes
+        bricks.add(new Brick(265, calculateY(6.912),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(7.377),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(8.081),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(8.549),70,40,BrickColors[2],2, speed));
+            //Solo
+        bricks.add(new Brick(265, calculateY(9.951),70,40,BrickColors[2],2, speed));
+
+        //Blue Notes
+            //solo
+        bricks.add(new Brick(345, calculateY(10.184),70,40,BrickColors[3],3, speed));
+
+
+
+
+
+
+
+
+
+
+
+        return bricks;
+    }
+    public static ArrayList<Brick> getSong3(){
+        ArrayList<Brick> bricks = new ArrayList<>();
+        speed = 130;
+        //Green Notes
+        bricks.add(new Brick(105, calculateY(4.151),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(5),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(6),70,40,BrickColors[0],0, speed));
+
+
+
+
+
+
+        return bricks;
+    }
 
     private static int calculateY(double elementPostion){
         return (int) ((SCREEN_HEIGHT-50) - (speed * elementPostion));

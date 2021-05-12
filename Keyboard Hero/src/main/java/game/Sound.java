@@ -56,8 +56,8 @@ public class Sound {
                 return "menuMusic.wav";
             case ZDTF1:
                 return "zweiunddreissigtausendMASTER.wav";
-            case ZDTF2:
-                return "zweiunddreissigtausendMASTER.wav";
+            case SAWM:
+                return "SneakAwayWithMe.mp3";
             case INORBIT:
                 return "zweiunddreissigtausendMASTER.wav";
             case STOP:

@@ -102,7 +102,7 @@ public class GameScene extends BaseScene {
         score.setLayoutX(SCREEN_WIDTH - 100);
         score.setLayoutY(SCREEN_HEIGHT - 100);
         score.setTextFill(Color.BLACK);
-        score.setFont(Font.font("Arial bold",20));
+        score.setFont(Font.font("Arial bold",15));
         root.getChildren().add(score);
 
         //Combo
@@ -111,7 +111,7 @@ public class GameScene extends BaseScene {
         streak.setLayoutX(SCREEN_WIDTH - 100);
         streak.setLayoutY(SCREEN_HEIGHT - 80);
         streak.setTextFill(Color.BLACK);
-        streak.setFont(Font.font("Arial bold",20));
+        streak.setFont(Font.font("Arial bold",15));
         root.getChildren().add(streak);
 
 
@@ -119,7 +119,7 @@ public class GameScene extends BaseScene {
         clock.setLayoutX(SCREEN_WIDTH - 100);
         clock.setLayoutY(SCREEN_HEIGHT - 60);
         clock.setTextFill(Color.BLACK);
-        clock.setFont(Font.font("Arial bold",20));
+        clock.setFont(Font.font("Arial bold",15));
         root.getChildren().add(clock);
 
         //Letters & Lines
@@ -149,7 +149,20 @@ public class GameScene extends BaseScene {
         }
 
         //Bricks
-        bricks.addAll(Songs.getSong1());
+        switch(StartScene.getSongNr()) {
+            case 1:
+                bricks.addAll(Songs.getSong1());
+                break;
+            case 2:
+                bricks.addAll(Songs.getSong2());
+                break;
+            case 3:
+                bricks.addAll(Songs.getSong3());
+                break;
+            default:
+                break;
+        }
+
 
         root.getChildren().addAll(lines);
         root.getChildren().addAll(rectangles);
@@ -184,12 +197,29 @@ public class GameScene extends BaseScene {
             }
         }));
         looper.setCycleCount(Animation.INDEFINITE);
-        Sound.play(Songlist.ZDTF1, new Runnable() {
-            @Override
-            public void run() {
-                looper.play();
-            }
-        });
+        switch(StartScene.getSongNr()) {
+            case 1:
+                Sound.play(Songlist.ZDTF1, new Runnable() {
+                    @Override
+                    public void run() {
+                        looper.play();
+                    }
+
+                });
+                break;
+            case 2:
+                Sound.play(Songlist.SAWM, new Runnable() {
+                    @Override
+                    public void run() {
+                        looper.play();
+                    }
+                });
+                break;
+            default:
+                break;
+            case 3:
+                bricks.addAll(Songs.getSong3());
+        }
 
 
     }
@@ -226,7 +256,7 @@ public class GameScene extends BaseScene {
                 currentStreak = 1;
                 currentMissedNotes+=1;
                 score.setText("Score: "+ currentScore);
-                streak.setText("Combo: "+ currentStreak +"x");
+                streak.setText("Streak: "+ currentStreak +"x");
 
                 sidetexts.add(new SideText(0));
 
@@ -370,7 +400,7 @@ public class GameScene extends BaseScene {
                     currentStreak += 1;
                     currentMissedNotes = 0;
                     score.setText("Score: "+ currentScore);
-                    streak.setText("Combo: "+ currentStreak +"x");
+                    streak.setText("Streak: "+ currentStreak +"x");
                     System.out.println("Late");
                     sidetexts.add(new SideText(2));
                     break;
@@ -381,7 +411,7 @@ public class GameScene extends BaseScene {
                     currentStreak += 1;
                     currentMissedNotes = 0;
                     score.setText("Score: "+ currentScore);
-                    streak.setText("Combo: "+ currentStreak +"x");
+                    streak.setText("Streak: "+ currentStreak +"x");
                     System.out.println("Early");
                     sidetexts.add(new SideText(1));
                     break;
@@ -390,7 +420,7 @@ public class GameScene extends BaseScene {
                     currentScore-= 10;
                     currentStreak = 1;
                     score.setText("Score: "+ currentScore);
-                    streak.setText("Combo: "+ currentStreak +"x");
+                    streak.setText("Streak: "+ currentStreak +"x");
                     sidetexts.add(new SideText(0));
                     break;
                 }

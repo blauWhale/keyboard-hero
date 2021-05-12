@@ -11,14 +11,14 @@ import javafx.scene.control.Button;
 import static game.Constant.SCREEN_WIDTH;
 
 public class StartScene extends BaseScene {
-    private static int gameDifficulty = 0;
+    private static int SongNr = 0;
     public StartScene(Navigator navigator) {
         super(navigator, Images.WELCOME);
 
 
         Button easyButton = new Button("Bl\u00f6 - Zweiunddreissigtausend");
         easyButton.setOnMouseClicked(event -> {
-            setGameDifficulty(1);
+            setSongNr(1);
             navigator.goTo(SceneType.GAME_SCREEN);
         });
         easyButton.setPadding(new Insets(10));
@@ -26,9 +26,10 @@ public class StartScene extends BaseScene {
         easyButton.setLayoutX(SCREEN_WIDTH/2 - easyButton.getPrefWidth()/2);
         easyButton.setLayoutY(350);
 
-        Button normalButton = new Button("Bl\u00f6 - Zweiunddreissigtausend(Remix)");
+        Button normalButton = new Button("Kyrptogram - Sneak Away With Me");
         normalButton.setOnMouseClicked(event -> {
-
+            setSongNr(2);
+            navigator.goTo(SceneType.GAME_SCREEN);
         });
         normalButton.setPadding(new Insets(10));
         normalButton.setPrefWidth(220);
@@ -37,7 +38,8 @@ public class StartScene extends BaseScene {
 
         Button hardButton = new Button("Bl\u00f6 - In OrBIT");
         hardButton.setOnMouseClicked(event -> {
-
+            setSongNr(3);
+            navigator.goTo(SceneType.GAME_SCREEN);
         });
         hardButton.setPadding(new Insets(10));
         hardButton.setPrefWidth(100);
@@ -63,11 +65,11 @@ public class StartScene extends BaseScene {
 
     }
 
-    public static int getGameDifficulty() {
-        return gameDifficulty;
+    public static int getSongNr() {
+        return SongNr;
     }
 
-    public static void setGameDifficulty(int gameDifficulty) {
-        StartScene.gameDifficulty = gameDifficulty;
+    public static void setSongNr(int songNr) {
+        StartScene.SongNr = songNr;
     }
 }
