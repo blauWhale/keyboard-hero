@@ -149,7 +149,7 @@ public class GameScene extends BaseScene {
         }
 
         //Bricks
-        switch(StartScene.getSongNr()) {
+        switch(((Integer) navigator.getExchange("songNr")).intValue()) {
             case 1:
                 bricks.addAll(Songs.getSong1());
                 break;
@@ -197,7 +197,7 @@ public class GameScene extends BaseScene {
             }
         }));
         looper.setCycleCount(Animation.INDEFINITE);
-        switch(StartScene.getSongNr()) {
+        switch(((Integer) navigator.getExchange("songNr")).intValue()) {
             case 1:
                 Sound.play(Songlist.ZDTF1, new Runnable() {
                     @Override
@@ -290,14 +290,15 @@ public class GameScene extends BaseScene {
         Duration time = Sound.getSongTime();
         clock.setText(String.format("Time: %.2f", time.toSeconds()));
 
-        if (currentMissedNotes >= 5){
-            //navigator.goTo(SceneType.GAMEOVER_SCREEN);
+        if (currentMissedNotes >= 10){
+            navigator.goTo(SceneType.GAMEOVER_SCREEN);
         }
 
         if (time.toSeconds() >= Sound.getSongDuration().toSeconds()){
             GameScene.finalScore = currentScore;
             navigator.goTo(SceneType.WINNER_SCREEN);
         }
+
 
 
         bricks.removeAll(deadBricks);

@@ -10,6 +10,7 @@ public class Navigator {
 
     private final Stage stage;
     private final Map<SceneType, BaseScene> viewMap = new HashMap<>();
+    private Map<String, Object> exchange = new HashMap<>();
 
     public Navigator(Stage stage) {
         this.stage = stage;
@@ -30,6 +31,15 @@ public class Navigator {
         nextScene.start();
         stage.setScene(nextScene);
 
+    }
+
+    public void goTo(SceneType sceneType, String key, Object value){
+        exchange.put(key, value);
+        this.goTo(sceneType);
+    }
+
+    public Object getExchange(String key){
+        return exchange.get(key);
     }
 
 }

@@ -40,9 +40,10 @@ public class WinnerScene extends BaseScene {
         finalscore.setFont(Font.font("Arial bold",30));
 
 
+
         Button btntoMenu = new Button("Back to Menu");
         btntoMenu.setOnMouseClicked(event -> {
-            navigator.goTo(SceneType.START_SCREEN);
+            navigator.goTo(SceneType.START_SCREEN, "finishedSongNr", ((Integer) navigator.getExchange("songNr")).intValue());
         });
         btntoMenu.setPadding(new Insets(10));
         btntoMenu.setPrefWidth(150);
