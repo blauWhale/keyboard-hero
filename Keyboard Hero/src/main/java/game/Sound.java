@@ -58,8 +58,8 @@ public class Sound {
                 return "zweiunddreissigtausendMASTER.wav";
             case SAWM:
                 return "SneakAwayWithMe.mp3";
-            case INORBIT:
-                return "zweiunddreissigtausendMASTER.wav";
+            case BOL:
+                return "BeamofLight.mp3";
             case STOP:
                 return "";
             default:

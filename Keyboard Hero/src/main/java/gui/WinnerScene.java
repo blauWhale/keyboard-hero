@@ -33,7 +33,7 @@ public class WinnerScene extends BaseScene {
         Group root = (Group) getRoot();
         root.getChildren().clear();
         super.prepare();
-        Label finalscore = new Label(GameScene.getFinalScore() +" Points");
+        Label finalscore = new Label(navigator.getExchange("finalScore") +" Points");
         finalscore.setLayoutX(SCREEN_WIDTH /2 - 50);
         finalscore.setLayoutY(SCREEN_HEIGHT - 250);
         finalscore.setTextFill(Color.BLACK);
@@ -43,7 +43,7 @@ public class WinnerScene extends BaseScene {
 
         Button btntoMenu = new Button("Back to Menu");
         btntoMenu.setOnMouseClicked(event -> {
-            navigator.goTo(SceneType.START_SCREEN, "finishedSongNr", ((Integer) navigator.getExchange("songNr")).intValue());
+            navigator.goTo(SceneType.START_SCREEN, "finishedSongNr", navigator.getExchange("songNr"));
         });
         btntoMenu.setPadding(new Insets(10));
         btntoMenu.setPrefWidth(150);

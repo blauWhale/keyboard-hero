@@ -42,41 +42,42 @@ public class StartScene extends BaseScene {
         Button easyButton = new Button("Bl\u00f6 - Zweiunddreissigtausend");
         easyButton.setOnMouseClicked(event -> {
             //setSongNr(1);
-            navigator.goTo(SceneType.GAME_SCREEN, "songNr", Integer.valueOf(1));
+            navigator.goTo(SceneType.GAME_SCREEN, "songNr", 1);
         });
         easyButton.setPadding(new Insets(10));
         easyButton.setPrefWidth(200);
         easyButton.setLayoutX(SCREEN_WIDTH/2 - easyButton.getPrefWidth()/2);
         easyButton.setLayoutY(350);
+        root.getChildren().add(easyButton);
 
-        Button normalButton = new Button("Kyrptogram - Sneak Away With Me");
-        normalButton.setOnMouseClicked(event -> {
-            navigator.goTo(SceneType.GAME_SCREEN, "songNr", Integer.valueOf(2));
-        });
-        normalButton.setPadding(new Insets(10));
-        normalButton.setPrefWidth(220);
-        normalButton.setLayoutX(SCREEN_WIDTH/2 - normalButton.getPrefWidth()/2);
-        normalButton.setLayoutY(400);
+        if (finishedSongs.contains(1)){
+            Button normalButton = new Button("Kyrptogram - Sneak Away With Me");
+            normalButton.setOnMouseClicked(event -> {
+                navigator.goTo(SceneType.GAME_SCREEN, "songNr", 2);
+            });
+            normalButton.setPadding(new Insets(10));
+            normalButton.setPrefWidth(220);
+            normalButton.setLayoutX(SCREEN_WIDTH/2 - normalButton.getPrefWidth()/2);
+            normalButton.setLayoutY(400);
+            root.getChildren().add(normalButton);
+        }
 
-        if (finishedSongs.contains(2)){
-            Button hardButton = new Button("Bl\u00f6 - In OrBIT");
+
+
+        //if (finishedSongs.contains(2)){
+        if (true){
+            Button hardButton = new Button("Gammer - Beam of Light");
             hardButton.setOnMouseClicked(event -> {
-                navigator.goTo(SceneType.GAME_SCREEN, "songNr", Integer.valueOf(3));
+                navigator.goTo(SceneType.GAME_SCREEN, "songNr", 3);
             });
             hardButton.setPadding(new Insets(10));
-            hardButton.setPrefWidth(100);
-            hardButton.setLayoutX(250);
+            hardButton.setPrefWidth(200);
+            hardButton.setLayoutX(SCREEN_WIDTH/2 - hardButton.getPrefWidth()/2);
             hardButton.setLayoutY(450);
             root.getChildren().add(hardButton);
         }
 
 
-
-
-
-
-        root.getChildren().add(normalButton);
-        root.getChildren().add(easyButton);
 
     }
     /*public static int getSongNr() {
