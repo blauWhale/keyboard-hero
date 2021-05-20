@@ -102,6 +102,7 @@ public class GameScene extends BaseScene {
 
         //Score
         currentScore = 0;
+        currentMissedNotes = 0;
         score.setText("Score: "+ currentScore);
         score.setLayoutX(SCREEN_WIDTH - 100);
         score.setLayoutY(SCREEN_HEIGHT - 100);
@@ -314,15 +315,15 @@ public class GameScene extends BaseScene {
             navigator.goTo(SceneType.GAMEOVER_SCREEN);
         }
 
-        /*if (time.toSeconds() >= Sound.getSongDuration().toSeconds()){
-            checkScore();
-            navigator.goTo(SceneType.WINNER_SCREEN, "finalScore", currentScore);
-        }*/
-
-      if (time.toSeconds() >= 10){
+        if (time.toSeconds() >= Sound.getSongDuration().toSeconds()){
             checkScore();
             navigator.goTo(SceneType.WINNER_SCREEN, "finalScore", currentScore);
         }
+
+      /*if (time.toSeconds() >= 10){
+            checkScore();
+            navigator.goTo(SceneType.WINNER_SCREEN, "finalScore", currentScore);
+        }*/
 
 
 

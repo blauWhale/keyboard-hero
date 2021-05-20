@@ -7,8 +7,8 @@ gui/StartScene.java
  gui.StartScene
 game/objects/Brick.java
  game.objects.Brick
-game/Songs.java
- game.Songs
+gui/GameOverScene.java
+ gui.GameOverScene
 gui/Navigator.java
  gui.Navigator
 game/objects/SideText.java
@@ -23,8 +23,8 @@ game/Images.java
  game.Images
 game/Constant.java
  game.Constant
-gui/GameOverScene.java
- gui.GameOverScene
+game/Songs.java
+ game.Songs
 main/KeyboardHeroApp.java
  main.KeyboardHeroApp
  main.KeyboardHeroApp$1

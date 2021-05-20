@@ -487,7 +487,62 @@ public class Songs {
 
         bricks.add(new Brick(105, calculateY(23.502),70,40,BrickColors[0],0, speed));
         bricks.add(new Brick(105, calculateY(24.393),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(25.981),70,40,BrickColors[0],0, speed));
         bricks.add(new Brick(105, calculateY(26.687),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(28.442),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(28.823),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(29.212),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(30.040),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(31.627),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(32.073),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(32.861),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(34.096),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(34.627),70,40,BrickColors[0],0, speed));
+
+        bricks.add(new Brick(105, calculateY(23.502+11.3),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(24.393+11.3),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(25.981+11.3),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(26.687+11.3),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(28.442+11.3),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(28.823+11.3),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(29.212+11.3),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(30.040+11.3),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(42.568),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(42.924),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(43.276),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(43.628),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(43.978),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(44.334),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(44.688),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(45.038),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(45.394),70,40,BrickColors[0],0, speed));
+
+        //Drop
+        bricks.add(new Brick(105, calculateY(23.502+22.6),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(24.393+22.6),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(25.981+22.6),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(26.687+22.6),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(28.442+22.6),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(28.823+22.6),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(29.212+22.6),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(30.040+22.6),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(31.627+22.6),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(32.073+22.6),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(32.861+22.6),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(34.096+22.6),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(34.627+22.6),70,40,BrickColors[0],0, speed));
+
+        bricks.add(new Brick(105, calculateY(23.502+33.9),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(24.393+33.9),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(25.981+33.9),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(26.687+33.9),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(28.442+33.9),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(28.823+33.9),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(29.212+33.9),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(30.040+33.9),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(31.627+33.9),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(32.073+33.9),70,40,BrickColors[0],0, speed));
+        bricks.add(new Brick(105, calculateY(32.861+33.9),70,40,BrickColors[0],0, speed));
 
         //Red Notes
         bricks.add(new Brick(185, calculateY(0.925),70,40,BrickColors[1],1, speed));
@@ -509,9 +564,62 @@ public class Songs {
 
         bricks.add(new Brick(185, calculateY(23.686),70,40,BrickColors[1],1, speed));
         bricks.add(new Brick(185, calculateY(24.570),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(26.082),70,40,BrickColors[1],1, speed));
+
         bricks.add(new Brick(185, calculateY(27.041),70,40,BrickColors[1],1, speed));
         bricks.add(new Brick(185, calculateY(27.394),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(28.097),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(28.644),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(29.336),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(30.214),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(31.721),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(32.303),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(33.097),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(33.567),70,40,BrickColors[1],1, speed));
 
+        bricks.add(new Brick(185, calculateY(23.686+11.3),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(24.570+11.3),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(26.082+11.3),70,40,BrickColors[1],1, speed));
+
+        bricks.add(new Brick(185, calculateY(27.041+11.3),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(27.394+11.3),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(28.097+11.3),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(28.644+11.3),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(29.336+11.3),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(30.214+11.3),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(45.608),70,40,BrickColors[1],1, speed));
+
+
+        //Drop
+        bricks.add(new Brick(185, calculateY(23.686+22.6),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(24.570+22.6),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(26.082+22.6),70,40,BrickColors[1],1, speed));
+
+        bricks.add(new Brick(185, calculateY(27.041+22.6),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(27.394+22.6),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(28.097+22.6),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(28.644+22.6),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(29.336+22.6),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(30.214+22.6),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(31.721+22.6),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(32.303+22.6),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(33.097+22.6),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(33.567+22.6),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(34.282+22.6),70,40,BrickColors[1],1, speed));
+
+        bricks.add(new Brick(185, calculateY(23.686+33.9),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(24.570+33.9),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(26.082+33.9),70,40,BrickColors[1],1, speed));
+
+        bricks.add(new Brick(185, calculateY(27.041+33.9),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(27.394+33.9),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(28.097+33.9),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(28.644+33.9),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(29.336+33.9),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(30.214+33.9),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(31.721+33.9),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(32.303+33.9),70,40,BrickColors[1],1, speed));
+        bricks.add(new Brick(185, calculateY(33.097+33.9),70,40,BrickColors[1],1, speed));
 
 
         //Yellow Notes
@@ -530,17 +638,86 @@ public class Songs {
         bricks.add(new Brick(265, calculateY(26.151),70,40,BrickColors[2],2, speed));
         bricks.add(new Brick(265, calculateY(26.482),70,40,BrickColors[2],2, speed));
         bricks.add(new Brick(265, calculateY(27.215),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(27.923),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(29.509),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(30.392),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(31.274),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(31.783),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(32.477),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(34.450),70,40,BrickColors[2],2, speed));
+
+        bricks.add(new Brick(265, calculateY(23.861+11.3),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(24.742+11.3),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(25.265+11.3),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(26.151+11.3),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(26.482+11.3),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(27.215+11.3),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(27.923+11.3),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(29.509+11.3),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(30.392+11.3),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(45.776),70,40,BrickColors[2],2, speed));
+
+        //Drop
+        bricks.add(new Brick(265, calculateY(23.861+22.6),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(24.742+22.6),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(25.265+22.6),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(26.151+22.6),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(26.482+22.6),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(27.215+22.6),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(27.923+22.6),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(29.509+22.6),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(30.392+22.6),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(31.274+22.6),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(31.783+22.6),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(32.477+22.6),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(34.450+22.6),70,40,BrickColors[2],2, speed));
+
+        bricks.add(new Brick(265, calculateY(23.861+33.9),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(24.742+33.9),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(25.265+33.9),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(26.151+33.9),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(26.482+33.9),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(27.215+33.9),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(27.923+33.9),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(29.509+33.9),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(30.392+33.9),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(31.274+33.9),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(31.783+33.9),70,40,BrickColors[2],2, speed));
+        bricks.add(new Brick(265, calculateY(32.477+33.9),70,40,BrickColors[2],2, speed));
+
 
 
         //Blue Notes
         bricks.add(new Brick(345, calculateY(24.039),70,40,BrickColors[3],3, speed));
         bricks.add(new Brick(345, calculateY(25.100),70,40,BrickColors[3],3, speed));
         bricks.add(new Brick(345, calculateY(25.627),70,40,BrickColors[3],3, speed));
-        bricks.add(new Brick(345, calculateY(26.082),70,40,BrickColors[3],3, speed));
         bricks.add(new Brick(345, calculateY(27.573),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(29.686),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(30.921),70,40,BrickColors[3],3, speed));
 
+
+        bricks.add(new Brick(345, calculateY(24.039+11.3),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(25.100+11.3),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(25.627+11.3),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(27.573+11.3),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(29.686+11.3),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(30.921+11.3),70,40,BrickColors[3],3, speed));
+
+        //Drop
+        bricks.add(new Brick(345, calculateY(24.039+22.6),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(25.100+22.6),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(25.627+22.6),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(27.573+22.6),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(29.686+22.6),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(30.921+22.6),70,40,BrickColors[3],3, speed));
+
+        bricks.add(new Brick(345, calculateY(24.039+33.9),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(25.100+33.9),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(25.627+33.9),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(27.573+33.9),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(29.686+33.9),70,40,BrickColors[3],3, speed));
+        bricks.add(new Brick(345, calculateY(30.921+33.9),70,40,BrickColors[3],3, speed));
         //Purple Notes
-        bricks.add(new Brick(425, calculateY(25.981),70,40,BrickColors[4],4, speed));
 
 
 
