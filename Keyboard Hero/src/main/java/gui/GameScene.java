@@ -23,6 +23,8 @@ import javafx.scene.text.Font;
 import javafx.scene.paint.*;
 import javafx.util.Duration;
 
+import javax.swing.*;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -43,6 +45,7 @@ public class GameScene extends BaseScene {
 
     //Text
     private Label score = new Label();
+    private Label highScore = new Label();
     private Label streak = new Label();
     private Label clock = new Label("0:00");
 
@@ -51,6 +54,7 @@ public class GameScene extends BaseScene {
 
     private int currentScore = 0;
     private static int finalScore = 0;
+    private String highestScore = "default:0";
     private int currentStreak = 1;
 
     //Letters
@@ -104,6 +108,17 @@ public class GameScene extends BaseScene {
         score.setTextFill(Color.BLACK);
         score.setFont(Font.font("Arial bold",15));
         root.getChildren().add(score);
+
+
+        highestScore = this.getHighestScore();
+
+        highScore.setText("Highscore: "+ highestScore);
+        highScore.setFont(Font.font("Arial bold", 15));
+        highScore.setLayoutX(SCREEN_WIDTH - 100);
+        highScore.setLayoutY(SCREEN_HEIGHT - 120);
+        highScore.setTextFill(Color.BLACK);
+        root.getChildren().add(highScore);
+
 
         //Combo
         currentStreak = 0;
@@ -299,13 +314,15 @@ public class GameScene extends BaseScene {
             navigator.goTo(SceneType.GAMEOVER_SCREEN);
         }
 
-        if (time.toSeconds() >= Sound.getSongDuration().toSeconds()){
-            navigator.goTo(SceneType.WINNER_SCREEN, "finalScore", currentScore);
-        }
-
-     /*   if (time.toSeconds() >= 5){
+        /*if (time.toSeconds() >= Sound.getSongDuration().toSeconds()){
+            checkScore();
             navigator.goTo(SceneType.WINNER_SCREEN, "finalScore", currentScore);
         }*/
+
+      if (time.toSeconds() >= 10){
+            checkScore();
+            navigator.goTo(SceneType.WINNER_SCREEN, "finalScore", currentScore);
+        }
 
 
 
@@ -455,6 +472,72 @@ public class GameScene extends BaseScene {
 
     public void setFinalScore(int finalScore) {
         this.finalScore = finalScore;
+    }
+
+    public String getHighestScore() {
+        FileReader readFile;
+        BufferedReader reader = null;
+        // Read the first line of the File and then return it
+        try {
+            readFile = new FileReader( navigator.getExchange("songNr")+ "highscore.dat");
+            reader = new BufferedReader(readFile);
+            String s = reader.readLine();
+            if (s == null){
+                s = "default:0";
+            }
+            return s;
+        }
+        // If File not found or if an error occurs, set High-Score to 0
+        catch (Exception e) {
+            return "default:0";
+        }
+        // Close the Reader
+        finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+    }
+
+    public void checkScore() {
+        // Split the Highscore int into an array of 2 parts, one the name and the other with the number(Name /:/ 100) Samuel  ("100") -> int 100 -> 90 > 100 -> true/false
+
+        String[] subStrings = highestScore.split(":");
+        String currentHighScore = subStrings[1];
+        int currentHighScoreInt = Integer.parseInt(currentHighScore);
+        if (currentScore > currentHighScoreInt) { // Integer.parseInt(highestScore.split(":")[1])){
+            // Creates a Textfield that asks for Players name if they set a new record
+            String name = JOptionPane.showInputDialog("You set a new Highscore! Enter your name:");
+            highestScore = name + ":" + currentScore;
+
+            File scoreFile = new File(navigator.getExchange("songNr") + "highscore.dat");
+            // Create a new File if doesn't exist
+            if (!scoreFile.exists()) {
+                try {
+                    scoreFile.createNewFile();
+                } catch (Exception e) {
+                }
+            }
+            // Creates a FileWriter, that stores the File and creates a BufferedWriter, which allows us to write to the File
+            FileWriter writeFile = null;
+            BufferedWriter writer = null;
+            try {
+                writeFile = new FileWriter(scoreFile);
+                writer = new BufferedWriter(writeFile);
+                writer.write(this.highestScore);
+            } catch (Exception e) {
+            } finally {
+                try {
+                    if (writer != null) {
+                        writer.close();
+                    }
+                } catch (Exception e) {
+                }
+            }
+        }
     }
 
 

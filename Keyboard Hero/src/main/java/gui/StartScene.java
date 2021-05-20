@@ -50,7 +50,8 @@ public class StartScene extends BaseScene {
         easyButton.setLayoutY(350);
         root.getChildren().add(easyButton);
 
-        if (finishedSongs.contains(1)){
+        //if (finishedSongs.contains(1)){
+        if (true){
             Button normalButton = new Button("Kyrptogram - Sneak Away With Me");
             normalButton.setOnMouseClicked(event -> {
                 navigator.goTo(SceneType.GAME_SCREEN, "songNr", 2);
