@@ -7,15 +7,19 @@ import game.Sound;
 import game.objects.Brick;
 import game.objects.SideText;
 import gui.common.BaseScene;
+import gui.common.FontFactory;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Side;
 import javafx.scene.CacheHint;
 import javafx.scene.Group;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
@@ -51,7 +55,7 @@ public class GameScene extends BaseScene {
 
 
 
-
+    //Score
     private int currentScore = 0;
     private static int finalScore = 0;
     private String highestScore = "default:0";
@@ -100,42 +104,58 @@ public class GameScene extends BaseScene {
 
         root.setCacheHint(CacheHint.DEFAULT);
 
+        //Font
+        Font winFontSmall = FontFactory.initFont(17);
+        Font winFontBig = FontFactory.initFont(40);
+
         //Score
         currentScore = 0;
         currentMissedNotes = 0;
         score.setText("Score: "+ currentScore);
         score.setLayoutX(SCREEN_WIDTH - 100);
-        score.setLayoutY(SCREEN_HEIGHT - 100);
+        score.setLayoutY(SCREEN_HEIGHT - 140);
         score.setTextFill(Color.BLACK);
-        score.setFont(Font.font("Arial bold",15));
+        score.setFont(winFontSmall);
         root.getChildren().add(score);
 
 
         highestScore = this.getHighestScore();
 
-        highScore.setText("Highscore: "+ highestScore);
-        highScore.setFont(Font.font("Arial bold", 15));
+        highScore.setText("Highscore:\n"+ highestScore);
+        highScore.setFont(winFontSmall);
         highScore.setLayoutX(SCREEN_WIDTH - 100);
-        highScore.setLayoutY(SCREEN_HEIGHT - 120);
+        highScore.setLayoutY(SCREEN_HEIGHT - 80);
         highScore.setTextFill(Color.BLACK);
         root.getChildren().add(highScore);
 
 
-        //Combo
+        //Streak
         currentStreak = 0;
         streak.setText("Streak: "+ currentStreak +"x");
         streak.setLayoutX(SCREEN_WIDTH - 100);
-        streak.setLayoutY(SCREEN_HEIGHT - 80);
+        streak.setLayoutY(SCREEN_HEIGHT - 120);
         streak.setTextFill(Color.BLACK);
-        streak.setFont(Font.font("Arial bold",15));
+        streak.setFont(winFontSmall);
         root.getChildren().add(streak);
+
+        Button btntoMenu = new Button("Back to Menu");
+        btntoMenu.setOnMouseClicked(event -> {
+            navigator.goTo(SceneType.START_SCREEN);
+            looper.stop();
+        });
+        btntoMenu.setPadding(new Insets(10));
+        btntoMenu.setPrefWidth(100);
+        btntoMenu.setLayoutX(SCREEN_WIDTH - 100);
+        btntoMenu.setLayoutY(SCREEN_HEIGHT - 250);
+        btntoMenu.setFont(winFontSmall);
+        root.getChildren().add(btntoMenu);
 
 
         //Clock
         clock.setLayoutX(SCREEN_WIDTH - 100);
-        clock.setLayoutY(SCREEN_HEIGHT - 60);
+        clock.setLayoutY(SCREEN_HEIGHT - 40);
         clock.setTextFill(Color.BLACK);
-        clock.setFont(Font.font("Arial bold",15));
+        clock.setFont(winFontSmall);
         root.getChildren().add(clock);
 
         //Letters & Lines
@@ -149,9 +169,9 @@ public class GameScene extends BaseScene {
             //Null Exception Handler
             if (i < lineCount){
                 letters.add(new Label(Keys[i]));
-                letters.get(i).setLayoutX(x+25);
-                letters.get(i).setLayoutY(SCREEN_HEIGHT - 60);
-                letters.get(i).setFont(Font.font("Arial Bold", 40));
+                letters.get(i).setLayoutX(x+30);
+                letters.get(i).setLayoutY(SCREEN_HEIGHT - 55);
+                letters.get(i).setFont(winFontBig);
 
                 //Trigger Area
                 rectangles.add(new Rectangle(lineWidth-10, 40, Color.valueOf(Colors[i])));
@@ -253,21 +273,9 @@ public class GameScene extends BaseScene {
 
     private void update(double deltaInSec) {
 
-        if(A_KeyPressed){
-            checkBrick(0);
-        }
-        if(S_KeyPressed){
-            checkBrick(1);
-        }
-        if(D_KeyPressed){
-            checkBrick(2);
-        }
-        if(F_KeyPressed){
-            checkBrick(3);
-        }
-        if(G_KeyPressed){
-            checkBrick(4);
-        }
+
+        checkKeys();
+
 
         for (Brick brick : bricks) {
             brick.update(deltaInSec);
@@ -315,21 +323,39 @@ public class GameScene extends BaseScene {
             navigator.goTo(SceneType.GAMEOVER_SCREEN);
         }
 
-        if (time.toSeconds() >= Sound.getSongDuration().toSeconds()){
-            checkScore();
-            navigator.goTo(SceneType.WINNER_SCREEN, "finalScore", currentScore);
-        }
-
-      /*if (time.toSeconds() >= 10){
+        /*if (time.toSeconds() >= Sound.getSongDuration().toSeconds()){
             checkScore();
             navigator.goTo(SceneType.WINNER_SCREEN, "finalScore", currentScore);
         }*/
+
+      if (time.toSeconds() >= 10){
+            checkScore();
+            navigator.goTo(SceneType.WINNER_SCREEN, "finalScore", currentScore);
+        }
 
 
 
         bricks.removeAll(deadBricks);
         root.getChildren().removeAll(deadBricks);
         deadBricks.clear();
+    }
+
+    private void checkKeys() {
+        if(A_KeyPressed){
+            checkBrick(0);
+        }
+        if(S_KeyPressed){
+            checkBrick(1);
+        }
+        if(D_KeyPressed){
+            checkBrick(2);
+        }
+        if(F_KeyPressed){
+            checkBrick(3);
+        }
+        if(G_KeyPressed){
+            checkBrick(4);
+        }
     }
 
     private void registerKeyHandlers() {
@@ -415,7 +441,7 @@ public class GameScene extends BaseScene {
                     currentStreak += 1;
                     currentMissedNotes = 0;
                     score.setText("Score: "+ currentScore);
-                    streak.setText("Combo: "+ currentStreak +"x");
+                    streak.setText("Streak: "+ currentStreak +"x");
                     System.out.println("Perfect");
                     sidetexts.add(new SideText(3));
                     break;

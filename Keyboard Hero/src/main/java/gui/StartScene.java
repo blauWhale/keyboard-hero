@@ -4,6 +4,7 @@ import game.Images;
 import game.Songlist;
 import game.Sound;
 import gui.common.BaseScene;
+import gui.common.FontFactory;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
@@ -45,9 +46,10 @@ public class StartScene extends BaseScene {
             navigator.goTo(SceneType.GAME_SCREEN, "songNr", 1);
         });
         easyButton.setPadding(new Insets(10));
-        easyButton.setPrefWidth(200);
+        easyButton.setPrefWidth(300);
         easyButton.setLayoutX(SCREEN_WIDTH/2 - easyButton.getPrefWidth()/2);
         easyButton.setLayoutY(350);
+        easyButton.setFont(FontFactory.initFont(15));
         root.getChildren().add(easyButton);
 
         //if (finishedSongs.contains(1)){
@@ -57,9 +59,10 @@ public class StartScene extends BaseScene {
                 navigator.goTo(SceneType.GAME_SCREEN, "songNr", 2);
             });
             normalButton.setPadding(new Insets(10));
-            normalButton.setPrefWidth(220);
+            normalButton.setPrefWidth(300);
             normalButton.setLayoutX(SCREEN_WIDTH/2 - normalButton.getPrefWidth()/2);
             normalButton.setLayoutY(400);
+            normalButton.setFont(FontFactory.initFont(15));
             root.getChildren().add(normalButton);
         }
 
@@ -72,9 +75,10 @@ public class StartScene extends BaseScene {
                 navigator.goTo(SceneType.GAME_SCREEN, "songNr", 3);
             });
             hardButton.setPadding(new Insets(10));
-            hardButton.setPrefWidth(200);
+            hardButton.setPrefWidth(300);
             hardButton.setLayoutX(SCREEN_WIDTH/2 - hardButton.getPrefWidth()/2);
             hardButton.setLayoutY(450);
+            hardButton.setFont(FontFactory.initFont(15));
             root.getChildren().add(hardButton);
         }
 

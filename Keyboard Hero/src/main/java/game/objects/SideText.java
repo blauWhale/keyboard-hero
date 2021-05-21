@@ -1,5 +1,6 @@
 package game.objects;
 
+import gui.common.FontFactory;
 import javafx.animation.FadeTransition;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
@@ -17,7 +18,7 @@ public class SideText extends Label{
     private boolean finished = false;
     private int kind;
     private double x = SCREEN_WIDTH - 100 ;
-    private double y = SCREEN_HEIGHT - 120;
+    private double y = SCREEN_HEIGHT - 140;
     private String text = "";
     private Color color;
 
@@ -49,7 +50,7 @@ public class SideText extends Label{
         setLayoutX(x);
         setLayoutY(y);
         setTextFill(color);
-        setFont(Font.font("Arial bold",15));
+        setFont(FontFactory.initFont(15));
 
         fadeIn.setNode(this);
 

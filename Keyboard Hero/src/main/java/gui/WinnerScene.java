@@ -4,12 +4,16 @@ import game.Images;
 import game.Songlist;
 import game.Sound;
 import gui.common.BaseScene;
+import gui.common.FontFactory;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 import static game.Constant.SCREEN_HEIGHT;
 import static game.Constant.SCREEN_WIDTH;
@@ -34,12 +38,32 @@ public class WinnerScene extends BaseScene {
         root.getChildren().clear();
         super.prepare();
         Label finalscore = new Label(navigator.getExchange("finalScore") +" Points");
-        finalscore.setLayoutX(SCREEN_WIDTH /2 - 50);
-        finalscore.setLayoutY(SCREEN_HEIGHT - 250);
         finalscore.setTextFill(Color.BLACK);
-        finalscore.setFont(Font.font("Arial bold",30));
+        finalscore.setFont(FontFactory.initFont(25));
+        finalscore.setLayoutX(SCREEN_WIDTH /2 - 50);
+        finalscore.setLayoutY(SCREEN_HEIGHT - 260);
 
+        String winnertext = "Well done";
+        switch(navigator.getExchange("songNr")) {
+            case 1:
+                winnertext = "\nYou unlocked a new Song:\nkryptogram - Sneak Away With Me";
+                break;
+            case 2:
+                winnertext = "\nYou unlocked a new Song:\nGammer - Beam of Light";
+                break;
+            case 3:
+                winnertext = "\nYou finished Keyboard Hero";
+                break;
+            default:
+                break;
+        }
 
+        Text congrats = new Text ("Congratulations! " + winnertext);
+        congrats.setLayoutX(SCREEN_WIDTH /2 - 150);
+        congrats.setLayoutY(SCREEN_HEIGHT - 180);
+        congrats.setFill(Color.BLACK);
+        congrats.setFont(FontFactory.initFont(25));
+        congrats.setTextAlignment(TextAlignment.CENTER);
 
         Button btntoMenu = new Button("Back to Menu");
         btntoMenu.setOnMouseClicked(event -> {
@@ -50,6 +74,7 @@ public class WinnerScene extends BaseScene {
         btntoMenu.setLayoutX(SCREEN_WIDTH/2 - btntoMenu.getPrefWidth()/2);
         btntoMenu.setLayoutY(650);
 
+        root.getChildren().add(congrats);
         root.getChildren().add(finalscore);
         root.getChildren().add(btntoMenu);
     }
