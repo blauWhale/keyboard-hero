@@ -1,6 +1,6 @@
 package gui;
 
-//import game.objects.*;
+
 import game.Songlist;
 import game.Songs;
 import game.Sound;
@@ -9,14 +9,11 @@ import game.objects.SideText;
 import gui.common.BaseScene;
 import gui.common.FontFactory;
 import javafx.animation.Animation;
-import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Side;
 import javafx.scene.CacheHint;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
@@ -29,7 +26,6 @@ import javafx.util.Duration;
 
 import javax.swing.*;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -323,15 +319,15 @@ public class GameScene extends BaseScene {
             navigator.goTo(SceneType.GAMEOVER_SCREEN);
         }
 
-        /*if (time.toSeconds() >= Sound.getSongDuration().toSeconds()){
-            checkScore();
-            navigator.goTo(SceneType.WINNER_SCREEN, "finalScore", currentScore);
-        }*/
-
-      if (time.toSeconds() >= 10){
+        if (time.toSeconds() >= Sound.getSongDuration().toSeconds()){
             checkScore();
             navigator.goTo(SceneType.WINNER_SCREEN, "finalScore", currentScore);
         }
+
+//      if (time.toSeconds() >= 10){
+//            checkScore();
+//            navigator.goTo(SceneType.WINNER_SCREEN, "finalScore", currentScore);
+//        }
 
 
 
@@ -493,13 +489,6 @@ public class GameScene extends BaseScene {
         G_KeyPressed = false;
     }
 
-    public static int getFinalScore() {
-        return finalScore;
-    }
-
-    public void setFinalScore(int finalScore) {
-        this.finalScore = finalScore;
-    }
 
     public String getHighestScore() {
         FileReader readFile;

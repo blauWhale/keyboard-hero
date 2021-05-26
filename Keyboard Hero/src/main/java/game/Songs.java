@@ -3,8 +3,6 @@ package game;
 import game.objects.Brick;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import static game.Constant.BrickColors;
 import static game.Constant.SCREEN_HEIGHT;
@@ -718,12 +716,6 @@ public class Songs {
         bricks.add(new Brick(345, calculateY(29.686+33.9),70,40,BrickColors[3],3, speed));
         bricks.add(new Brick(345, calculateY(30.921+33.9),70,40,BrickColors[3],3, speed));
         //Purple Notes
-
-
-
-
-
-
 
         return bricks;
     }

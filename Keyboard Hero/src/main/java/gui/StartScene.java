@@ -9,8 +9,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,7 +26,7 @@ public class StartScene extends BaseScene {
     @Override
     public void start() {
         Sound.play(Songlist.BACKGROUND);
-        finishedSongs.add((Integer) navigator.getExchange("finishedSongNr"));
+        finishedSongs.add(navigator.getExchange("finishedSongNr"));
         generateView();
     }
 
@@ -42,7 +40,6 @@ public class StartScene extends BaseScene {
 
         Button easyButton = new Button("Bl\u00f6 - Zweiunddreissigtausend");
         easyButton.setOnMouseClicked(event -> {
-            //setSongNr(1);
             navigator.goTo(SceneType.GAME_SCREEN, "songNr", 1);
         });
         easyButton.setPadding(new Insets(10));
@@ -52,8 +49,8 @@ public class StartScene extends BaseScene {
         easyButton.setFont(FontFactory.initFont(15));
         root.getChildren().add(easyButton);
 
-        //if (finishedSongs.contains(1)){
-        if (true){
+        if (finishedSongs.contains(1)){
+//        if (true){
             Button normalButton = new Button("Kyrptogram - Sneak Away With Me");
             normalButton.setOnMouseClicked(event -> {
                 navigator.goTo(SceneType.GAME_SCREEN, "songNr", 2);
@@ -68,8 +65,8 @@ public class StartScene extends BaseScene {
 
 
 
-        //if (finishedSongs.contains(2)){
-        if (true){
+        if (finishedSongs.contains(2)){
+//        if (true){
             Button hardButton = new Button("Gammer - Beam of Light");
             hardButton.setOnMouseClicked(event -> {
                 navigator.goTo(SceneType.GAME_SCREEN, "songNr", 3);
@@ -85,13 +82,5 @@ public class StartScene extends BaseScene {
 
 
     }
-    /*public static int getSongNr() {
-        return SongNr;
-    }
-
-    public static void setSongNr(int songNr) {
-        StartScene.SongNr = songNr;
-    }*/
-
 
 }
