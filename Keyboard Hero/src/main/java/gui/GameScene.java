@@ -102,6 +102,7 @@ public class GameScene extends BaseScene {
 
         //Font
         Font winFontSmall = FontFactory.initFont(17);
+        Font winFontSmaller = FontFactory.initFont(13);
         Font winFontBig = FontFactory.initFont(40);
 
         //Score
@@ -118,7 +119,7 @@ public class GameScene extends BaseScene {
         highestScore = this.getHighestScore();
 
         highScore.setText("Highscore:\n"+ highestScore);
-        highScore.setFont(winFontSmall);
+        highScore.setFont(winFontSmaller);
         highScore.setLayoutX(SCREEN_WIDTH - 100);
         highScore.setLayoutY(SCREEN_HEIGHT - 80);
         highScore.setTextFill(Color.BLACK);
@@ -139,11 +140,12 @@ public class GameScene extends BaseScene {
             navigator.goTo(SceneType.START_SCREEN);
             looper.stop();
         });
-        btntoMenu.setPadding(new Insets(10));
+        btntoMenu.setPadding(new Insets(5));
         btntoMenu.setPrefWidth(100);
+        btntoMenu.setPrefHeight(40);
         btntoMenu.setLayoutX(SCREEN_WIDTH - 100);
-        btntoMenu.setLayoutY(SCREEN_HEIGHT - 250);
-        btntoMenu.setFont(winFontSmall);
+        btntoMenu.setLayoutY(SCREEN_HEIGHT - 650);
+        btntoMenu.setFont(winFontSmaller);
         root.getChildren().add(btntoMenu);
 
 

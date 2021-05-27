@@ -50,7 +50,6 @@ public class StartScene extends BaseScene {
         root.getChildren().add(easyButton);
 
         if (finishedSongs.contains(1)){
-//        if (true){
             Button normalButton = new Button("Kyrptogram - Sneak Away With Me");
             normalButton.setOnMouseClicked(event -> {
                 navigator.goTo(SceneType.GAME_SCREEN, "songNr", 2);
@@ -65,8 +64,7 @@ public class StartScene extends BaseScene {
 
 
 
-        if (finishedSongs.contains(2)){
-//        if (true){
+         if (finishedSongs.contains(2)){
             Button hardButton = new Button("Gammer - Beam of Light");
             hardButton.setOnMouseClicked(event -> {
                 navigator.goTo(SceneType.GAME_SCREEN, "songNr", 3);
