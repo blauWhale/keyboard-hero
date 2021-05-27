@@ -11,4 +11,21 @@ Der Spieler verliert, wenn eine spezifische Anzahl Noten in Folge nicht getroffe
 ### Mockups
 #### Menu/Game Screen/Winner Screen/Loser Screen:<br>![Mockups](Admin/Mockups/Keyboard_Hero.png )
 
+### Klassendiagramm <br><br>![Mockups](Admin/Klassendiagramm.png )
+
 ### Fazit
+Das Projekt machte grosse Freude und ich bin sehr stolz auf das Resultat.
+Ich war froh konnte ich ausnahmsweise alleine arbeiten, auch wenn ich die Hilfe
+von Andreas und Marco sehr gerne in Anspruch nahm. In einem Team zu arbeiten sehe
+ich aber trotzdem als die bessere Variante. Alleine konnte ich all meine User-Stories
+umsetzten, wäre aber sicher weitergekommen in einem Team. <br> Die Herausforderung mit der 
+Synchronisation des Visuellen mit dem Akustischen war sicher die grösste Schwierigkeit.
+Die Hilfe durch die Coaches und das gemeinsame Erarbeiten der Lösung war sehr spannend.
+Während der Realisierung merke ich immer wieder das der Anspruch auf eine "perfekte" Lösung
+nicht realistisch war und ich mich gut und gerne mit einer Lösung zufrieden geben kann, die
+die Anforderung entsprechen. Die Verbindung mit der Musik in diesem Projekt machte mir
+am meisten Spass und war gleichzeitig langwierig und manchmal ermüdend. Ich konnte aber
+dank meiner Einzelarbeit, kurz auf eine kleineres Thema eingehen um dann wieder mit einem frischen Kopf in das
+Abbilden der Noten in den Levels einzusteigen. In diesem Projekt festigte ich meine Java
+Kenntnise und konnte Sicherheit gewinnen. Nun hoffe ich ich meine Skills im Mobile App ÜK
+abrufen kann.
