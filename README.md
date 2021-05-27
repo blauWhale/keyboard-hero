@@ -27,5 +27,5 @@ die Anforderung entsprechen. Die Verbindung mit der Musik in diesem Projekt mach
 am meisten Spass und war gleichzeitig langwierig und manchmal ermüdend. Ich konnte aber
 dank meiner Einzelarbeit, kurz auf eine kleineres Thema eingehen um dann wieder mit einem frischen Kopf in das
 Abbilden der Noten in den Levels einzusteigen. In diesem Projekt festigte ich meine Java
-Kenntnise und konnte Sicherheit gewinnen. Nun hoffe ich ich meine Skills im Mobile App ÜK
+Kenntnise und konnte Sicherheit gewinnen. Nun hoffe ich das ich meine Skills im Mobile App ÜK
 abrufen kann.
